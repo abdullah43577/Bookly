@@ -13,8 +13,11 @@ module.exports = {
     extend: {
       colors: {
         headerBackground: '#1B3764',
+        headerParagraphTexts: '#B4C7E7',
+        white: '#FFFFFF',
         CTA: '#FFCA42',
         background: '#F6F8FC',
+        mainPGParagraphTxt: '#969AA0',
       },
 
       backgroundImage: {

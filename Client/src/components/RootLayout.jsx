@@ -1,17 +1,15 @@
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import { useRouter } from 'next/router';
-import HomeDYN from '@/dynamic-contents/homeDYN';
-import AboutDYN from '@/dynamic-contents/AboutDYN';
-import PagesDYN from '@/dynamic-contents/PagesDYN';
-import ServicesDYN from '@/dynamic-contents/ServicesDYN';
-import ContactDYN from '@/dynamic-contents/Contact';
-import { useState, useEffect } from 'react';
+import HomeDYN from '@/components/HomeDYN';
+import AboutDYN from '@/components/AboutDYN';
+import PagesDYN from '@/components/PagesDYN';
+import ServicesDYN from '@/components/ServicesDYN';
+import ContactDYN from '@/components/Contact';
 
 export default function RootLayout({ children }) {
-  // const router = useRouter();
   const [router, setRouter] = useState(useRouter());
-  // const currentRoute = router.pathname;
   const [currentRoute, setCurrentRoute] = useState(router.pathname);
 
   useEffect(() => {
@@ -19,13 +17,13 @@ export default function RootLayout({ children }) {
     console.log(router);
     // function to render different content based on the route
     if (currentRoute === '/pages') {
-      return <PagesDYN />;
+      setCurrentRoute(<PagesDYN />);
     } else if (currentRoute === '/about') {
-      return <AboutDYN />;
+      setCurrentRoute(<AboutDYN />);
     } else if (currentRoute === '/services') {
-      return <ServicesDYN />;
+      setCurrentRoute(<ServicesDYN />);
     } else if (currentRoute === '/contact') {
-      return <ContactDYN />;
+      setCurrentRoute(<ContactDYN />);
     } else {
       setCurrentRoute(<HomeDYN />);
     }

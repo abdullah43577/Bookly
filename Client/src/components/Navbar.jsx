@@ -35,7 +35,7 @@ export default function Navbar() {
         {/* Cart icon */}
         <Image src={cart} alt="cart icon" height={21} width={22} className="cursor-pointer" />
 
-        <button className="bg-CTA px-3 py-2 text-headerBackground font-bold">Order Today</button>
+        <button className="bg-CTA px-3 py-2 text-headerBackground font-bold ml-6">Order Today</button>
       </div>
     </nav>
   );

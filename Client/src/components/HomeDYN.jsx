@@ -3,23 +3,56 @@ import Image from 'next/image';
 import book from '../../public/images/hero book.png';
 import line from '../../public/images/Line.png';
 import whiteLine from '../../public/images/white line.png';
+import bullet from '../../public/images/Point.png';
 
 export default function HomeDYN() {
   return (
-    <section className="hero lg:flex justify-between items-center max-w-[1200px] w-full mx-auto mt-10">
-      <div className="hero-content lg:flex gap-4 flex-col lg:w-1/2">
+    <section className="hero lg:flex justify-between items-center container w-full mx-auto mt-10">
+      <div className="hero-content lg:flex gap-6 flex-col lg:w-1/2">
         <small className="text-background flex items-center gap-2 text-lg">
           <Image src={line} alt="line" />
           <i> Welcome to Bookly</i>
         </small>
         <h2 className="text-white text-6xl font-bold">Books are uniquely portable magic</h2>
-        <p className="text-background">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
-        <div className="button-sect lg:flex items-center gap-4">
-          <button className="bg-CTA px-3 py-2 text-headerBackground font-bold">Order Today</button>
-          <Link href="#" className="text-white">
+        <p className="text-headerParagraphTexts">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+        <div className="button-sect lg:flex items-center gap-4 my-4">
+          <button className="bg-CTA px-6 py-3 text-headerBackground font-bold">Order Today</button>
+          <Link href="#" className="text-white hover:text-CTA">
             <a>Read Free Demo</a>
             <Image src={whiteLine} alt="white border" width={125} />
           </Link>
+        </div>
+
+        <div className="info lg:flex items-center justify-between">
+          <div className="info1 flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <Image src={bullet} alt="bullet point" width={10} />
+              <label htmlFor="pages" className="text-white text-lg">
+                Pages:
+              </label>
+            </div>
+            <small className="text-headerParagraphTexts">586 pages</small>
+          </div>
+
+          <div className="info2 flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <Image src={bullet} alt="bullet point" width={10} />
+              <label htmlFor="pages" className="text-white text-lg">
+                Length:
+              </label>
+            </div>
+            <small className="text-headerParagraphTexts">10 Hours</small>
+          </div>
+
+          <div className="info3 flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <Image src={bullet} alt="bullet point" width={10} />
+              <label htmlFor="pages" className="text-white text-lg">
+                Ratings:
+              </label>
+            </div>
+            <small className="text-headerParagraphTexts">4.5/5 (305 ratings)</small>
+          </div>
         </div>
       </div>
 

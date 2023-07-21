@@ -12,27 +12,33 @@ export default function RootLayout({ children }) {
   const [router, setRouter] = useState(useRouter());
   const [currentRoute, setCurrentRoute] = useState(router.pathname);
 
+  // function to render different content based on the route
   useEffect(() => {
     console.log('current route changed');
     console.log(router);
-    // function to render different content based on the route
-    if (currentRoute === '/pages') {
-      setCurrentRoute(<PagesDYN />);
-    } else if (currentRoute === '/about') {
-      setCurrentRoute(<AboutDYN />);
-    } else if (currentRoute === '/services') {
-      setCurrentRoute(<ServicesDYN />);
-    } else if (currentRoute === '/contact') {
-      setCurrentRoute(<ContactDYN />);
-    } else {
-      setCurrentRoute(<HomeDYN />);
+    switch (currentRoute) {
+      case '/pages':
+        setCurrentRoute(<PagesDYN />);
+        break;
+      case '/about':
+        setCurrentRoute(<AboutDYN />);
+        break;
+      case '/services':
+        setCurrentRoute(<ServicesDYN />);
+        break;
+      case '/contact':
+        setCurrentRoute(<ContactDYN />);
+        break;
+      default:
+        setCurrentRoute(<HomeDYN />);
+        break;
     }
   }, [router]);
 
   return (
     <div className="root">
       <header className="bg-headerBackground w-full h-screen relative">
-        <div className="inner_header max-w-[1200px] w-full lg:flex items-center justify-center mx-auto">
+        <div className="inner_header w-full lg:flex items-center justify-center mx-auto container">
           <Navbar />
         </div>
 

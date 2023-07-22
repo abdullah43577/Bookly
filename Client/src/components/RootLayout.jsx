@@ -36,14 +36,14 @@ export default function RootLayout({ children }) {
   }, [router]);
 
   return (
-    <div className="root">
-      <header className="bg-headerBackground w-full h-screen relative">
+    <>
+      <header className="bg-headerBackground w-full h-auto lg:h-screen relative px-8 pb-6 lg:pb-0">
         <div className="inner_header w-full lg:flex items-center justify-center mx-auto container">
           <Navbar />
         </div>
 
         {/* content rendered dynamically based on the route */}
-        {currentRoute}
+        <section className="hero lg:flex justify-between items-center container w-full mx-auto mt-10">{currentRoute}</section>
       </header>
 
       <main className="w-full h-full">
@@ -51,6 +51,6 @@ export default function RootLayout({ children }) {
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 }

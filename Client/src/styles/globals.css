@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --headerBackground: '#1B3664';
+  --headerParagraphTexts: '#B4C7E7';
+  --white: '#FFFFFF';
+  --CTA: '#FFCA42';
+  --background: '#F6F8FC';
+  --mainPGParagraphTxt: '#969AA0';
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -19,23 +28,29 @@ body {
   width: 100%;
 }
 
-:root {
-  --headerBackground: '#1B3664';
-  --headerParagraphTexts: '#B4C7E7';
-  --white: '#FFFFFF';
-  --CTA: '#FFCA42';
-  --background: '#F6F8FC';
-  --mainPGParagraphTxt: '#969AA0';
-}
-
-div.root {
-  min-height: 100vh;
-  width: 100%;
-}
-
-button,
-h2,
-label,
-i {
+.cardoFont {
   font-family: 'Cardo', serif;
+}
+
+.mobile-nav {
+  transition: transform 1s ease;
+}
+
+.burger div {
+  height: 3px;
+  width: 25px;
+  margin: 5px 0;
+  transition: all 500ms ease;
+}
+
+.burger .line1.toggle {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger .line2.toggle {
+  opacity: 0;
+}
+
+.burger .line3.toggle {
+  transform: rotate(45deg) translate(-5px, -6px);
 }

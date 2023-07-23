@@ -8,6 +8,7 @@ import AboutAuthor from '@/components/AboutAuthor';
 import Trustees from '@/components/Trustees';
 import BannerHome from '@/components/BannerHome';
 import WhatToLearn from '@/components/WhatToLearn';
+import ChapterSection from '@/components/Chaptersect';
 
 export default function Home() {
   return (
@@ -90,6 +91,7 @@ export default function Home() {
       <Trustees />
       <BannerHome />
       <WhatToLearn />
+      <ChapterSection />
     </>
   );
 }

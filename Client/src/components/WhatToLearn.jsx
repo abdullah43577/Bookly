@@ -20,7 +20,7 @@ export default function WhatToLearn() {
 
             <div className="bg-[#F4F8FF] p-8">
               <number className="p-2 bg-CTA text-headerBackground cardoFont rounded-full">02</number>
-              <p className="cardoFont text-headerBackground font-bold mt-4+">Consume streaming data using Spark Streaming, Flink, and Storm</p>
+              <p className="cardoFont text-headerBackground font-bold mt-4">Consume streaming data using Spark Streaming, Flink, and Storm</p>
             </div>
 
             <div className="bg-[#F4F8FF] p-8">

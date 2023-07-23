@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
 
   return (
     <>
-      <header className="bg-headerBackground w-full h-auto lg:h-screen relative px-8 pb-6 lg:pb-0">
+      <header className="bg-headerBackground w-full h-auto lg:h-screen relative px-8 pb-6 lg:pb-0 mb-32">
         <div className="inner_header w-full lg:flex items-center justify-center mx-auto container">
           <Navbar />
         </div>
@@ -46,9 +46,7 @@ export default function RootLayout({ children }) {
         <section className="hero lg:flex justify-between items-center container w-full mx-auto mt-10">{currentRoute}</section>
       </header>
 
-      <main className="w-full h-full">
-        <div className="inner_main max-w-[1200px]">{children}</div>
-      </main>
+      <main className="w-full h-full">{children}</main>
 
       <Footer />
     </>

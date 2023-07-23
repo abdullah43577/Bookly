@@ -54,3 +54,19 @@ body {
 .burger .line3.toggle {
   transform: rotate(45deg) translate(-5px, -6px);
 }
+
+.gridBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.gridBox > div {
+  box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+  .gridBox {
+    grid-template-columns: 1fr;
+  }
+}

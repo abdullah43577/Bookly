@@ -10,7 +10,7 @@ export default function Trustees() {
   const isSmallScreen = useMediaQuery('(max-width:978px)');
 
   return (
-    <section className="w-full px-8">
+    <section className="w-full px-8 mb-32">
       <container className="container mx-auto bg-[#F5F5F5]">
         <container className="flex flex-col items-center my-8">
           <h2 className="text-3xl text-center mb-3 cardoFont font-bold text-headerBackground">Trusted by the Best</h2>

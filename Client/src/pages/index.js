@@ -6,6 +6,8 @@ import book from '../../public/images/book(2).png';
 import bullet from '../../public/images/Point.png';
 import AboutAuthor from '@/components/AboutAuthor';
 import Trustees from '@/components/Trustees';
+import BannerHome from '@/components/BannerHome';
+import WhatToLearn from '@/components/WhatToLearn';
 
 export default function Home() {
   return (
@@ -86,6 +88,8 @@ export default function Home() {
       </section>
       <AboutAuthor />
       <Trustees />
+      <BannerHome />
+      <WhatToLearn />
     </>
   );
 }

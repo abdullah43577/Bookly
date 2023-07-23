@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function AboutAuthor() {
   return (
-    <section className="bg-[#F4F8FF] w-full px-8 mb-32">
+    <section className="bg-[#F4F8FF] w-full px-8 py-16 mb-32">
       <container className="container flex flex-col xl:flex-row mx-auto gap-16 items-center">
         <Image src={author} alt="author's image" />
 

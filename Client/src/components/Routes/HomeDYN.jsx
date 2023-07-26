@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import book from '../../public/images/hero book.png';
-import line from '../../public/images/Line.png';
-import whiteLine from '../../public/images/white line.png';
-import bullet from '../../public/images/Point.png';
+import book from '../../../public/images/hero book.png';
+import line from '../../../public/images/Line.png';
+import whiteLine from '../../../public/images/white line.png';
+import bullet from '../../../public/images/Point.png';
 
 export default function HomeDYN() {
   return (

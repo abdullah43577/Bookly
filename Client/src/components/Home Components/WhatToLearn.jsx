@@ -1,6 +1,6 @@
-import line from '../../public/images/Line.png';
+import line from '../../../public/images/Line.png';
 import Image from 'next/image';
-import womanIMG from '../../public/images/woman.png';
+import womanIMG from '../../../public/images/woman.png';
 
 export default function WhatToLearn() {
   return (

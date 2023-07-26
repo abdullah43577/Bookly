@@ -2,10 +2,10 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import HomeDYN from '@/components/HomeDYN';
-import AboutDYN from '@/components/AboutDYN';
-import PagesDYN from '@/components/PagesDYN';
-import ServicesDYN from '@/components/ServicesDYN';
+import HomeDYN from '@/components/Routes/HomeDYN';
+import AboutDYN from '@/components/Routes/AboutDYN';
+import PagesDYN from '@/components/Routes/PagesDYN';
+import ServicesDYN from '@/components/Routes/ServicesDYN';
 import ContactDYN from '@/components/Contact';
 
 export default function RootLayout({ children }) {

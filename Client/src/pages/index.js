@@ -4,18 +4,31 @@ import Image from 'next/image';
 import atomicBook from '../../public/images/atomic book.png';
 import book from '../../public/images/book(2).png';
 import bullet from '../../public/images/Point.png';
-import AboutAuthor from '@/components/AboutAuthor';
-import Trustees from '@/components/Trustees';
-import BannerHome from '@/components/BannerHome';
-import WhatToLearn from '@/components/WhatToLearn';
-import ChapterSection from '@/components/Chaptersect';
+import AboutAuthor from '@/components/Home Components/AboutAuthor';
+import Trustees from '@/components/Home Components/Trustees';
+import BannerHome from '@/components/Home Components/BannerHome';
+import WhatToLearn from '@/components/Home Components/WhatToLearn';
+import ChapterSection from '@/components/Home Components/Chaptersect';
+import ArticleResource from '@/components/Home Components/ArticleResource';
+
+//? getting data from the server
+// export const getStaticProps = async () => {
+//   const res = await fetch('http://localhost:3001/api');
+//   const data = await res.json();
+
+//   return {
+//     props: { data },
+//   };
+// };
 
 export default function Home() {
+  // console.log(data);
+
   return (
     <>
       <Head>
         <title>Bookly | Home</title>
-        <link rel="icon" type="image/x-icon" href="../../public/images/book.png"></link>
+        {/* <link rel="icon" type="image/x-icon" href="../../public/images/book.png"></link> */}
       </Head>
       <section className="container mx-auto px-8 mb-32">
         <container className="flex flex-col items-center my-8">
@@ -29,7 +42,7 @@ export default function Home() {
 
             <div className="md:w-1/4 flex flex-col xl:w-auto text-center xl:text-left">
               <h3 className="text-2xl font-medium text-headerBackground">Atomic One's</h3>
-              <p className="my-4 text-headerParagraphTexts">Many variations of passages of Lorem ipsum willing araise alteration in some form</p>
+              <p className="my-4 text-mainPGParagraphTxt">Many variations of passages of Lorem ipsum willing araise alteration in some form</p>
               <container className="flex justify-between">
                 <div className="info1 flex flex-col gap-1">
                   <div className="flex items-center gap-2">
@@ -38,7 +51,7 @@ export default function Home() {
                       Pages:
                     </label>
                   </div>
-                  <small className="text-headerParagraphTexts">586 pages</small>
+                  <small className="text-mainPGParagraphTxt">586 pages</small>
                 </div>
 
                 <div className="info2 flex flex-col gap-1">
@@ -48,7 +61,7 @@ export default function Home() {
                       Length:
                     </label>
                   </div>
-                  <small className="text-headerParagraphTexts">586 pages</small>
+                  <small className="text-mainPGParagraphTxt">586 pages</small>
                 </div>
               </container>
               <button className="cardoFont border-2 border-CTA px-10 py-3 text-headerBackground mt-4 hover:bg-CTA">Order Today</button>
@@ -60,7 +73,7 @@ export default function Home() {
 
             <div className="md:w-1/4 flex flex-col xl:w-auto text-center xl:text-left">
               <h3 className="text-2xl font-medium text-headerBackground">The Dark Light</h3>
-              <p className="my-4 text-headerParagraphTexts">Many variations of passages of Lorem ipsum willing araise alteration in some form</p>
+              <p className="my-4 text-mainPGParagraphTxt">Many variations of passages of Lorem ipsum willing araise alteration in some form</p>
               <container className="flex justify-between">
                 <div className="info1 flex flex-col gap-1">
                   <div className="flex items-center gap-2">
@@ -69,7 +82,7 @@ export default function Home() {
                       Pages:
                     </label>
                   </div>
-                  <small className="text-headerParagraphTexts">586 pages</small>
+                  <small className="text-mainPGParagraphTxt">586 pages</small>
                 </div>
 
                 <div className="info2 flex flex-col gap-1">
@@ -79,7 +92,7 @@ export default function Home() {
                       Length:
                     </label>
                   </div>
-                  <small className="text-headerParagraphTexts">586 pages</small>
+                  <small className="text-mainPGParagraphTxt">586 pages</small>
                 </div>
               </container>
               <button className="cardoFont border-2 border-CTA px-10 py-3 text-headerBackground mt-4 hover:bg-CTA">Order Today</button>
@@ -92,6 +105,7 @@ export default function Home() {
       <BannerHome />
       <WhatToLearn />
       <ChapterSection />
+      <ArticleResource />
     </>
   );
 }

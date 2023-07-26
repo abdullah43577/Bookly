@@ -1,9 +1,9 @@
-import line from '../../public/images/Line.png';
+import line from '../../../public/images/Line.png';
 import Image from 'next/image';
-import image1 from '../../public/images/Logo.png';
-import image2 from '../../public/images/Logo (1).png';
-import image3 from '../../public/images/Logo (2).png';
-import image4 from '../../public/images/Logo (3).png';
+import image1 from '../../../public/images/Logo.png';
+import image2 from '../../../public/images/Logo (1).png';
+import image3 from '../../../public/images/Logo (2).png';
+import image4 from '../../../public/images/Logo (3).png';
 import { useMediaQuery } from '@react-hook/media-query';
 
 export default function Trustees() {
@@ -23,7 +23,7 @@ export default function Trustees() {
             {!isSmallScreen && (
               <label htmlFor="logo">
                 <h2 className="text-headerBackground font-bold cardoFont text-2xl my-2">Amazen Corp</h2>
-                <p className="text-headerParagraphTexts w-2/3 mx-auto">A long establishing fact that those looking at its layout.</p>
+                <p className="text-mainPGParagraphTxt w-2/3 mx-auto">A long establishing fact that those looking at its layout.</p>
               </label>
             )}
           </div>
@@ -33,7 +33,7 @@ export default function Trustees() {
             {!isSmallScreen && (
               <label htmlFor="logo">
                 <h2 className="text-headerBackground font-bold cardoFont text-2xl my-2">Megan Books</h2>
-                <p className="text-headerParagraphTexts w-2/3 mx-auto">A long establishing fact that those looking at its layout.</p>
+                <p className="text-mainPGParagraphTxt w-2/3 mx-auto">A long establishing fact that those looking at its layout.</p>
               </label>
             )}
           </div>
@@ -43,7 +43,7 @@ export default function Trustees() {
             {!isSmallScreen && (
               <label htmlFor="logo">
                 <h2 className="text-headerBackground font-bold cardoFont text-2xl my-2">Los Books</h2>
-                <p className="text-headerParagraphTexts w-2/3 mx-auto">A long establishing fact that those looking at its layout.</p>
+                <p className="text-mainPGParagraphTxt w-2/3 mx-auto">A long establishing fact that those looking at its layout.</p>
               </label>
             )}
           </div>
@@ -53,7 +53,7 @@ export default function Trustees() {
             {!isSmallScreen && (
               <label htmlFor="logo">
                 <h2 className="text-headerBackground font-bold cardoFont text-2xl my-2">Urban Lib</h2>
-                <p className="text-headerParagraphTexts w-2/3 mx-auto">A long establishing fact that those looking at its layout.</p>
+                <p className="text-mainPGParagraphTxt w-2/3 mx-auto">A long establishing fact that those looking at its layout.</p>
               </label>
             )}
           </div>

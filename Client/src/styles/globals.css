@@ -70,3 +70,37 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.testimonial_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.testimonial_grid > article:last-child {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.testimonial_grid > article:nth-child(2) {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 780px) {
+  .testimonial_grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial_grid > article:last-child {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .testimonial_grid > article:nth-child(2) {
+    grid-column: auto;
+    grid-row: auto;
+    transform: translateY(0);
+  }
+}

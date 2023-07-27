@@ -16,7 +16,7 @@ export default function Navbar() {
     <nav className="logo_nav_menu flex items-center justify-between w-full py-6 h-[10vh]">
       <div className="logo flex items-center justify-center z-20">
         <Image src={book} alt="logo icon" />
-        <label htmlFor="logo" className="pl-2 text-white">
+        <label htmlFor="logo" className="pl-2 text-white font-bold">
           Bookly
         </label>
       </div>

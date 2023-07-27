@@ -11,5 +11,6 @@ app.listen(PORT, () => {
 });
 
 app.get('/api', (req, res) => {
-  res.json({ message: 'Hello from the server!' });
+  console.log(res);
+  res.status(200).json({ message: "If you're seeing this, connection established 👍" });
 });

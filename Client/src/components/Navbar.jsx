@@ -22,26 +22,34 @@ export default function Navbar() {
       </div>
 
       <div
-        className={`mobile-nav absolute top-[10vh] lg:top-0 right-0 lg:relative flex items-center lg:justify-center gap-4 bg-headerBackground h-full w-full lg:w-auto flex-col lg:bg-transparent lg:flex-row overflow-hidden lg:overflow-visible lg:translate-y-0 ${
+        className={`mobile-nav absolute top-[10vh] lg:top-0 right-0 lg:relative flex items-center lg:justify-center gap-4 bg-headerBackground h-screen lg:h-auto w-full lg:w-auto flex-col lg:bg-transparent lg:flex-row overflow-hidden lg:overflow-visible lg:translate-y-0 ${
           !navbar && 'translate-y-[-100%]'
         }`}
       >
         <ul className="lg:flex items-center justify-center text-white gap-4">
-          <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base">
-            <Link href="/">Home</Link>
-          </li>
-          <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base">
-            <Link href="/pages">Pages</Link>
-          </li>
-          <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base">
-            <Link href="/about">About</Link>
-          </li>
-          <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base">
-            <Link href="/services">Services</Link>
-          </li>
-          <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base">
-            <Link href="/contact">Contact</Link>
-          </li>
+          <Link href="/">
+            <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base text-center">Home</li>
+          </Link>
+
+          <Link href="/pages">
+            <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base text-center">Pages</li>
+          </Link>
+
+          <Link href="/about">
+            <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base text-center">About</li>
+          </Link>
+
+          <Link href="/services">
+            <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base text-center">Services</li>
+          </Link>
+
+          <Link href="/store">
+            <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base text-center">Store</li>
+          </Link>
+
+          <Link href="/contact">
+            <li className="hover:bg-CTA px-3 py-1 rounded text-lg my-4 lg:my-0 lg:text-base text-center">Contact</li>
+          </Link>
         </ul>
 
         {/* Cart icon */}

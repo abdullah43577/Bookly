@@ -11,13 +11,13 @@ export default function Trustees() {
 
   return (
     <section className="w-full px-8 mb-32">
-      <container className="container mx-auto bg-[#F5F5F5]">
-        <container className="flex flex-col items-center my-8">
+      <div className="container mx-auto bg-[#F5F5F5]">
+        <div className="flex flex-col items-center my-8">
           <h2 className="text-3xl text-center mb-3 cardoFont font-bold text-headerBackground">Trusted by the Best</h2>
           <Image src={line} alt="line" width={80} />
-        </container>
+        </div>
 
-        <container className="flex items-center justify-between text-center mt-10">
+        <div className="flex items-center justify-between text-center mt-10">
           <div className="flex items-center flex-col">
             <Image src={image2} alt="logo" width={isSmallScreen ? 50 : 100} />
             {!isSmallScreen && (
@@ -57,8 +57,8 @@ export default function Trustees() {
               </label>
             )}
           </div>
-        </container>
-      </container>
+        </div>
+      </div>
     </section>
   );
 }

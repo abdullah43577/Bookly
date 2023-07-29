@@ -1,12 +1,15 @@
 import Image from 'next/image';
 import book from '../../public/images/book.png';
 import bullet from '../../public/images/icon.png';
+import { useState } from 'react';
 
 export default function Footer() {
+  const [date, setDate] = useState(new Date().getFullYear());
+
   return (
     <footer className="w-full p-8 bg-headerBackground">
-      <container className="container mx-auto flex flex-col lg:flex-row items-start gap-8 border-b border-mainPGParagraphTxt pb-8 mb-4">
-        <wrapper>
+      <div className="container mx-auto flex flex-col lg:flex-row items-start gap-8 border-b border-mainPGParagraphTxt pb-8 mb-4">
+        <div>
           <div className="flex items-center">
             <Image src={book} alt="logo" />
             <label htmlFor="logo" className="pl-2 text-white font-bold">
@@ -19,9 +22,9 @@ export default function Footer() {
             <div className="bg-headerParagraphTexts p-4 rounded-md"></div>
             <div className="bg-headerParagraphTexts p-4 rounded-md"></div>
           </div>
-        </wrapper>
+        </div>
 
-        <wrapper className="ml-auto flex flex-col lg:flex-row items-start gap-10">
+        <div className="xl:ml-auto flex flex-col lg:flex-row items-start gap-10">
           <div>
             <h4 className="cardoFont text-white text-lg pb-3 font-bold">Explore</h4>
             <ul>
@@ -141,11 +144,11 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-        </wrapper>
-      </container>
+        </div>
+      </div>
 
       <copyright className="text-headerParagraphTexts w-full text-sm xl:text-center">
-        &copy; Drafted by <span className="text-white">VictorFlow</span> - Powered by <span className="text-white">Webflow</span> || Coded by <span className="text-white">Ayoola</span>
+        &copy; {date} Drafted by <span className="text-white">VictorFlow</span> - Powered by <span className="text-white">Webflow</span> || Coded by <span className="text-white">Ayoola</span>
       </copyright>
     </footer>
   );

@@ -9,13 +9,13 @@ export default function ArticleResource() {
   return (
     <>
       <section className="w-full p-8 bg-[#F4F8FF]">
-        <container className="container mx-auto mb-32 flex flex-col items-center">
-          <container className="flex flex-col items-center my-8">
+        <div className="container mx-auto mb-32 flex flex-col items-center">
+          <div className="flex flex-col items-center my-8">
             <h2 className="text-3xl text-center mb-3 cardoFont font-bold text-headerBackground">Article & Resources</h2>
             <Image src={line} alt="line" width={80} />
-          </container>
+          </div>
 
-          <container className="flex flex-col items-center lg:flex-row gap-6">
+          <div className="flex flex-col items-center lg:flex-row gap-6">
             <article className="cursor-pointer">
               <Image src={woman} alt="woman reading" width={350} />
               <div className="bg-white p-4 max-w-[350px]">
@@ -51,22 +51,22 @@ export default function ArticleResource() {
                 </div>
               </div>
             </article>
-          </container>
-        </container>
+          </div>
+        </div>
       </section>
 
       <section className="w-full p-8 bg-white mb-32">
-        <container className="container mx-auto bg-CTA p-8 xl:p-32 flex items-center flex-col">
-          <container className="flex flex-col items-center my-8">
+        <div className="container mx-auto bg-CTA p-8 xl:p-32 flex items-center flex-col">
+          <div className="flex flex-col items-center my-8">
             <h2 className="text-3xl text-center mb-3 cardoFont font-bold text-headerBackground">Read a free Chapter</h2>
             <Image src={line2} alt="line" width={80} />
-          </container>
+          </div>
           <p className="text-headerBackground text-center lg:w-1/2">Making this the first true value generator on the Internet. It has over 200 latin words, combined with a handful</p>
-          <container className="flex flex-col xl:flex-row items-center gap-3 mt-4">
+          <div className="flex flex-col xl:flex-row items-center gap-3 mt-4">
             <input type="text" placeholder="Your Email id..." className="w-full lg:w-[500px] py-4 px-6 rounded-md" />
             <button className="cardoFont bg-headerBackground px-10 py-4 rounded-md text-white">Subscribe</button>
-          </container>
-        </container>
+          </div>
+        </div>
       </section>
     </>
   );

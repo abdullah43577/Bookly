@@ -1,5 +1,5 @@
 {
-  "name": "librify server",
+  "name": "librify-server",
   "version": "1.0.0",
   "description": "Backend server package files",
   "main": "app.js",

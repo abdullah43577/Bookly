@@ -31,19 +31,19 @@ export default function Home() {
         {/* <link rel="icon" type="image/x-icon" href="../../public/images/book.png"></link> */}
       </Head>
       <section className="container mx-auto px-8 mb-32">
-        <container className="flex flex-col items-center my-8">
+        <div className="flex flex-col items-center my-8">
           <h2 className="text-3xl text-center mb-3 cardoFont font-bold text-headerBackground">Author's Book Includes</h2>
           <Image src={line} alt="line" width={80} />
-        </container>
+        </div>
 
-        <container className="flex flex-col xl:flex-row items-center justify-center xl:gap-10 my-10">
+        <div className="flex flex-col xl:flex-row items-center justify-center xl:gap-10 my-10">
           <div className="flex flex-col md:flex-row gap-3 mx-auto justify-center items-center">
             <Image src={atomicBook} alt="atomic book" />
 
             <div className="md:w-1/4 flex flex-col xl:w-auto text-center xl:text-left">
               <h3 className="text-2xl font-medium text-headerBackground">Atomic One's</h3>
               <p className="my-4 text-mainPGParagraphTxt">Many variations of passages of Lorem ipsum willing araise alteration in some form</p>
-              <container className="flex justify-between">
+              <div className="flex justify-between">
                 <div className="info1 flex flex-col gap-1">
                   <div className="flex items-center gap-2">
                     <Image src={bullet} alt="bullet point" width={10} />
@@ -63,7 +63,7 @@ export default function Home() {
                   </div>
                   <small className="text-mainPGParagraphTxt">586 pages</small>
                 </div>
-              </container>
+              </div>
               <button className="cardoFont border-2 border-CTA px-10 py-3 text-headerBackground mt-4 hover:bg-CTA">Order Today</button>
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function Home() {
             <div className="md:w-1/4 flex flex-col xl:w-auto text-center xl:text-left">
               <h3 className="text-2xl font-medium text-headerBackground">The Dark Light</h3>
               <p className="my-4 text-mainPGParagraphTxt">Many variations of passages of Lorem ipsum willing araise alteration in some form</p>
-              <container className="flex justify-between">
+              <div className="flex justify-between">
                 <div className="info1 flex flex-col gap-1">
                   <div className="flex items-center gap-2">
                     <Image src={bullet} alt="bullet point" width={10} />
@@ -94,11 +94,11 @@ export default function Home() {
                   </div>
                   <small className="text-mainPGParagraphTxt">586 pages</small>
                 </div>
-              </container>
+              </div>
               <button className="cardoFont border-2 border-CTA px-10 py-3 text-headerBackground mt-4 hover:bg-CTA">Order Today</button>
             </div>
           </div>
-        </container>
+        </div>
       </section>
       <AboutAuthor />
       <Trustees />

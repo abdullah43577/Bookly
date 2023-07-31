@@ -11,18 +11,18 @@ import WhatToLearn from '@/components/Home Components/WhatToLearn';
 import ChapterSection from '@/components/Home Components/Chaptersect';
 import ArticleResource from '@/components/Home Components/ArticleResource';
 
-//? getting data from the server
-// export const getStaticProps = async () => {
-//   const res = await fetch('http://localhost:3001/api');
-//   const data = await res.json();
+//? getting data from the server (runs before this page is loaded)
+export const getStaticProps = async () => {
+  const res = await fetch('http://localhost:8080/api');
+  const data = await res.json();
 
-//   return {
-//     props: { data },
-//   };
-// };
+  return {
+    props: { data },
+  };
+};
 
-export default function Home() {
-  // console.log(data);
+export default function Home({ data }) {
+  console.log('message from backend', data.message);
 
   return (
     <>

@@ -1,15 +1,10 @@
 import Image from 'next/image';
 import line2 from '../../public/images/line2.png';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { modal } from '../components/RootLayout';
 
 export default function store() {
-  const { modalWindow, handleClick } = useContext(modal);
-
-  const handleSubmit = function (e) {
-    console.log('submitted successfully');
-    e.preventDefault();
-  };
+  const { modalWindow, handleClick, handleSubmit, handleInputChange, submitBtn, formData } = useContext(modal);
 
   return (
     <>
@@ -19,40 +14,54 @@ export default function store() {
         </div>
       </section>
 
-      <section className={`modal w-[700px] bg-[#F3F3F3] mx-auto p-8 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md ${modalWindow && 'visible'}`}>
+      <section className={`modal w-[300px] sm:w-[350px] md:w-[700px] bg-[#F3F3F3] mx-auto p-8 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md ${modalWindow && 'visible'}`}>
         <form onSubmit={handleSubmit}>
-          <input type="file" className="mb-4" />
+          <input type="file" className="mb-4" id="file" name="file" value={formData.file} onChange={handleInputChange} required />
 
-          <div className="">
+          <div>
             <label htmlFor="title" className="cardoFont">
               Title
             </label>
-            <input type="text" className="block mt-2 w-full py-3 px-4 cardoFont" />
+            <input type="text" className="block mt-2 w-full py-3 px-4 cardoFont" id="title" name="title" value={formData.title} required onChange={handleInputChange} placeholder="Title" />
           </div>
 
           <div>
             <label htmlFor="price" className="cardoFont">
               Price
             </label>
-            <input type="text" className="block mt-2 w-full py-3 px-4 cardoFont" />
+            <input type="number" className="block mt-2 w-full py-3 px-4 cardoFont" id="price" name="price" value={formData.price} required onChange={handleInputChange} placeholder="$" />
           </div>
 
           <div>
             <label htmlFor="description" className="cardoFont">
               Description
             </label>
-            <textarea className="block mt-2 w-full h-[150px] cardoFont px-4 py-3"></textarea>
+            <textarea
+              className="block mt-2 w-full h-[150px] cardoFont px-4 py-3"
+              id="description"
+              name="description"
+              value={formData.description}
+              required
+              onChange={handleInputChange}
+              maxLength={300}
+              placeholder="Enter a short description"
+            ></textarea>
           </div>
 
           <div>
             <label htmlFor="category" className="cardoFont">
               Category
             </label>
-            <input type="text" className="block mt-2 w-full py-3 px-4 cardoFont" />
+            <input type="text" className="block mt-2 w-full py-3 px-4 cardoFont" id="category" name="category" value={formData.category} required onChange={handleInputChange} placeholder="Enter a category" />
           </div>
 
-          <button className="bg-CTA text-headerBackground font-bold cardoFont px-4 py-3">Upload</button>
+          <button className="bg-CTA text-headerBackground font-bold cardoFont px-4 py-3">{submitBtn}</button>
         </form>
+      </section>
+
+      {/* dynamically rendered content from backend */}
+      <section className="w-full p-8 mb-32">
+        <div className="container mx-auto"></div>
       </section>
 
       <section className="w-full p-8 bg-white mb-32">

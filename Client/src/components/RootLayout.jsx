@@ -8,6 +8,7 @@ import ServicesDYN from '@/components/Routes/ServicesDYN';
 import ContactDYN from '@/components/Contact';
 import StoreDYN from './Routes/StoreDYN';
 import { createContext, useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
 export const modal = createContext();
 
@@ -40,8 +41,35 @@ export default function RootLayout({ children }) {
     }
   }, [modalWindow]);
 
-  const handleInputChange = function (e) {
-    const { name, value } = e.target; // title, blog1
+  // converting image to base64 format
+  const base64EncodedImage = function (file) {
+    return new Promise((resolve, reject) => {
+      try {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = function () {
+          resolve(reader.result);
+        };
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
+
+  const handleFileChange = async function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const base64Image = await base64EncodedImage(file);
+      console.log('base64', base64Image);
+      setFormData((prevValue) => ({ ...prevValue, file: base64Image }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleInputChange = async function (e) {
+    const { name, value } = e.target;
     setFormData((prevValue) => ({ ...prevValue, [name]: value }));
   };
 
@@ -49,12 +77,10 @@ export default function RootLayout({ children }) {
     e.preventDefault();
     setSubmitBtn('Submitting...');
 
-    console.log('is there formData?', formData);
-
     // simulate some delay before submitting to the backend
     setTimeout(async () => {
       try {
-        const res = await fetch(`http://localhost:8080/store`, {
+        const res = await fetch(`http://localhost:8080/upload`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -62,11 +88,28 @@ export default function RootLayout({ children }) {
           body: JSON.stringify(formData),
         });
 
-        console.log(res);
-        if (res.status === 202) {
-          console.log('success');
+        // const data = await res.json();
+
+        if (res.status === 200) {
+          // swal code
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: 'success',
+            title: 'Submitted Successfully!',
+          });
         } else {
-          console.log('error');
+          console.log('error submitting form');
         }
       } catch (err) {
         console.log(err);
@@ -123,7 +166,7 @@ export default function RootLayout({ children }) {
   }, [router]);
 
   return (
-    <modal.Provider value={{ modalWindow, handleClick, handleSubmit, formData, handleInputChange, submitBtn }}>
+    <modal.Provider value={{ modalWindow, handleClick, handleSubmit, formData, handleInputChange, submitBtn, handleFileChange }}>
       <header className={`bg-headerBackground w-full h-auto ${desktopHeaderHeight} relative px-8 pb-6 lg:pb-0 ${margin}`}>
         <div className="inner_header w-full lg:flex items-center justify-center mx-auto container">
           <Navbar />

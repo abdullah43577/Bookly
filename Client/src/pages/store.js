@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import line2 from '../../public/images/line2.png';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { modal } from '../components/RootLayout';
 
 export default function store() {
-  const { modalWindow, handleClick, handleSubmit, handleInputChange, submitBtn, formData } = useContext(modal);
+  const { modalWindow, handleClick, handleSubmit, handleInputChange, submitBtn, formData, handleFileChange } = useContext(modal);
 
   return (
     <>
@@ -16,7 +16,7 @@ export default function store() {
 
       <section className={`modal w-[300px] sm:w-[350px] md:w-[700px] bg-[#F3F3F3] mx-auto p-8 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md ${modalWindow && 'visible'}`}>
         <form onSubmit={handleSubmit}>
-          <input type="file" className="mb-4" id="file" name="file" value={formData.file} onChange={handleInputChange} required />
+          <input type="file" className="mb-4" id="file" name="file" onChange={handleFileChange} required accept="image/*" />
 
           <div>
             <label htmlFor="title" className="cardoFont">

@@ -12,6 +12,17 @@ export default function Navbar() {
     setNavbar((prevValue) => !prevValue);
   };
 
+  // const handleDelete = async function () {
+  //   try {
+  //     const res = await fetch(`http://localhost:8080/delete-all-stores`, {
+  //       method: 'DELETE',
+  //     });
+  //     console.log(res);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   return (
     <nav className="logo_nav_menu flex items-center justify-between w-full py-6 h-[10vh]">
       <div className="logo flex items-center justify-center z-20">

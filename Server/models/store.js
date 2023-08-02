@@ -4,7 +4,6 @@ const Schema = mongoose.Schema; // deines the structure of the document.(Schema 
 const storeSchema = new Schema(
   {
     file: {
-      data: Buffer, // store the image as binary data
       type: String,
       required: true,
     },

@@ -34,11 +34,11 @@ export default function AboutAuthor() {
 
           <div className="bg-headerBackground flex flex-col md:flex-row items-center p-4 mt-8 gap-4">
             <Image src={qrcode} alt="qr code" />
-            <info>
+            <div>
               <p className="text-CTA cardoFont">John Abraham, Ph.d</p>
               <p className="text-headerParagraphTexts my-1">Mail: johnabraham@gmail.com</p>
               <p className="text-headerParagraphTexts">Phone: (+2) 123 549 9000</p>
-            </info>
+            </div>
           </div>
         </article>
       </div>

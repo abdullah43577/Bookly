@@ -22,7 +22,7 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ data }) {
-  console.log('message from backend', data.message);
+  console.log(data.message);
 
   return (
     <>

@@ -2,21 +2,22 @@ import Image from 'next/image';
 import line2 from '../../public/images/line2.png';
 import { useContext } from 'react';
 import { modal } from '../components/RootLayout';
+import AuthorBooks from '@/components/AuthorBooks';
 
 export default function store() {
-  const { modalWindow, handleClick, handleSubmit, handleInputChange, submitBtn, formData, handleFileChange } = useContext(modal);
+  const { modalWindow, handleClick, handleSubmit, handleInputChange, submitBtn, formData, handleFileChange, allUploadedBooks, fileInput } = useContext(modal);
 
   return (
     <>
       <section className="products w-full p-8">
-        <div className="container mx-auto cardoFont text-center border-2 border-[#F3F3F3] py-3 font-bold cursor-pointer" onClick={handleClick}>
-          Upload a New Product
+        <div className="container mx-auto cardoFont text-center border-2 border-mainPGParagraphTxt py-3 font-bold cursor-pointer" onClick={handleClick}>
+          Upload a New Book
         </div>
       </section>
 
       <section className={`modal w-[300px] sm:w-[350px] md:w-[700px] bg-[#F3F3F3] mx-auto p-8 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md ${modalWindow && 'visible'}`}>
         <form onSubmit={handleSubmit}>
-          <input type="file" className="mb-4" id="file" name="file" onChange={handleFileChange} required accept="image/*" />
+          <input type="file" className="mb-4" id="file" name="file" onChange={handleFileChange} required accept="image/*" ref={fileInput} />
 
           <div>
             <label htmlFor="title" className="cardoFont">
@@ -60,6 +61,8 @@ export default function store() {
       </section>
 
       {/* dynamically rendered content from backend */}
+      <AuthorBooks uploadedBooks={allUploadedBooks} />
+
       <section className="w-full p-8 mb-32">
         <div className="container mx-auto"></div>
       </section>

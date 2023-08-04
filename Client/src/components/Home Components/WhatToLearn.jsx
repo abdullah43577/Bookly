@@ -14,22 +14,22 @@ export default function WhatToLearn() {
         <div className="flex flex-col-reverse xl:flex-row items-center gap-16 mt-20">
           <div className="gridBox xl:w-1/2">
             <div className="bg-[#F4F8FF] p-8">
-              <number className="p-2 bg-CTA text-headerBackground cardoFont rounded-full">01</number>
+              <div className="p-2 bg-CTA text-headerBackground cardoFont rounded-full inline-block">01</div>
               <p className="cardoFont text-headerBackground font-bold mt-4">Use HDFS & Map Reduce for storing & analyzing data at scale</p>
             </div>
 
             <div className="bg-[#F4F8FF] p-8">
-              <number className="p-2 bg-CTA text-headerBackground cardoFont rounded-full">02</number>
+              <div className="p-2 bg-CTA text-headerBackground cardoFont rounded-full inline-block">02</div>
               <p className="cardoFont text-headerBackground font-bold mt-4">Consume streaming data using Spark Streaming, Flink, and Storm</p>
             </div>
 
             <div className="bg-[#F4F8FF] p-8">
-              <number className="p-2 bg-CTA text-headerBackground cardoFont rounded-full">03</number>
+              <div className="p-2 bg-CTA text-headerBackground cardoFont rounded-full inline-block">03</div>
               <p className="cardoFont text-headerBackground font-bold mt-4">Choose an appropriate data storage technology for your application</p>
             </div>
 
             <div className="bg-[#F4F8FF] p-8">
-              <number className="p-2 bg-CTA text-headerBackground cardoFont rounded-full">04</number>
+              <div className="p-2 bg-CTA text-headerBackground cardoFont rounded-full inline-block">04</div>
               <p className="cardoFont text-headerBackground font-bold mt-4">Analyze non-relational data using HBase, Cassandra and MongoDB</p>
             </div>
           </div>

@@ -7,18 +7,20 @@ import PagesDYN from '@/components/Routes/PagesDYN';
 import ServicesDYN from '@/components/Routes/ServicesDYN';
 import ContactDYN from '@/components/Contact';
 import StoreDYN from './Routes/StoreDYN';
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useRef } from 'react';
 import Swal from 'sweetalert2';
 
 export const modal = createContext();
 
 export default function RootLayout({ children }) {
-  const [router, setRouter] = useState(useRouter());
-  const [currentRoute, setCurrentRoute] = useState(router.pathname);
+  const router = useRouter();
+  const [currentRoute, setCurrentRoute] = useState('');
   const [desktopHeaderHeight, setDesktopHeaderHeight] = useState('');
   const [margin, setMargin] = useState('');
   const [modalWindow, setModalWindow] = useState(false);
-  const [submitBtn, setSubmitBtn] = useState('Submit');
+  const [submitBtn, setSubmitBtn] = useState('Upload');
+  const [allUploadedBooks, setAllUploadedBooks] = useState([]);
+  const fileInput = useRef();
 
   const [formData, setFormData] = useState({
     file: '',
@@ -39,6 +41,7 @@ export default function RootLayout({ children }) {
         category: '',
       });
     }
+    fileInput.current.value = '';
   }, [modalWindow]);
 
   // converting image to base64 format
@@ -61,7 +64,6 @@ export default function RootLayout({ children }) {
     if (!file) return;
     try {
       const base64Image = await base64EncodedImage(file);
-      console.log('base64', base64Image);
       setFormData((prevValue) => ({ ...prevValue, file: base64Image }));
     } catch (error) {
       console.error(error);
@@ -73,60 +75,77 @@ export default function RootLayout({ children }) {
     setFormData((prevValue) => ({ ...prevValue, [name]: value }));
   };
 
+  const alert = function (status, message) {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: status,
+      title: message,
+    });
+  };
+
   const handleSubmit = async function (e) {
     e.preventDefault();
-    setSubmitBtn('Submitting...');
+    setSubmitBtn('Uploading...');
 
-    // simulate some delay before submitting to the backend
-    setTimeout(async () => {
-      try {
-        const res = await fetch(`http://localhost:8080/upload`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
+    try {
+      const res = await fetch(`http://localhost:8080/api/upload`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-        // const data = await res.json();
+      const data = await res.json();
 
-        if (res.status === 200) {
-          // swal code
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer);
-              toast.addEventListener('mouseleave', Swal.resumeTimer);
-            },
-          });
+      console.log('res.status', res.status);
+      if (res.status !== 200) throw new Error(data.message);
 
-          Toast.fire({
-            icon: 'success',
-            title: 'Submitted Successfully!',
-          });
-        } else {
-          console.log('error submitting form');
-        }
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setSubmitBtn('Submit');
-        setModalWindow(false);
-      }
-    }, 2000); // 2 seconds delay;
+      alert('success', 'Submitted Successfully!');
+    } catch (err) {
+      console.log(err);
+      alert('error', 'Error Submitting Form');
+    } finally {
+      setSubmitBtn('Upload');
+      setModalWindow(false);
+    }
   };
 
   const handleClick = function () {
     setModalWindow(true);
   };
 
+  // fetch all books
+  useEffect(() => {
+    if (router.pathname === '/store') {
+      const fetchBooks = async () => {
+        try {
+          const res = await fetch('http://localhost:8080/api/get-all-books');
+          const data = await res.json();
+          setAllUploadedBooks(data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      fetchBooks();
+    }
+  }, [router.pathname, modalWindow]);
+
   // function to render different content based on the route
   useEffect(() => {
-    switch (currentRoute) {
+    switch (router.pathname) {
       case '/pages':
         setCurrentRoute(<PagesDYN />);
         setDesktopHeaderHeight('lg:h-[50vh]');
@@ -163,10 +182,10 @@ export default function RootLayout({ children }) {
         setMargin('mb-32');
         break;
     }
-  }, [router]);
+  }, [router.pathname]);
 
   return (
-    <modal.Provider value={{ modalWindow, handleClick, handleSubmit, formData, handleInputChange, submitBtn, handleFileChange }}>
+    <modal.Provider value={{ modalWindow, handleClick, handleSubmit, formData, handleInputChange, submitBtn, handleFileChange, allUploadedBooks, fileInput }}>
       <header className={`bg-headerBackground w-full h-auto ${desktopHeaderHeight} relative px-8 pb-6 lg:pb-0 ${margin}`}>
         <div className="inner_header w-full lg:flex items-center justify-center mx-auto container">
           <Navbar />

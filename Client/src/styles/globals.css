@@ -172,3 +172,13 @@ textarea:focus-within {
   visibility: visible !important;
   transition-delay: 0s;
 }
+
+.booksContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+input {
+  text-transform: capitalize;
+}

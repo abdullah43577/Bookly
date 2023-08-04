@@ -14,7 +14,7 @@ export default function Navbar() {
 
   // const handleDelete = async function () {
   //   try {
-  //     const res = await fetch(`http://localhost:8080/delete-all-stores`, {
+  //     const res = await fetch(`http://localhost:8080/api/delete-all-stores`, {
   //       method: 'DELETE',
   //     });
   //     console.log(res);

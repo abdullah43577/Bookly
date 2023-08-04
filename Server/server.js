@@ -29,53 +29,26 @@ const database = async function () {
 };
 
 database();
+// app.listen(8080, () => console.log('connected'));
 
 app.get('/api', (req, res) => {
   res.status(200).json({ message: 'Hello World!' });
 });
 
-app.get('/get-all-stores', async (req, res) => {
-  try {
-    const result = await Store.find({});
-    res.status(200).send(result);
-  } catch (err) {
-    res.send('Error fetching request', err);
-  }
-});
-
-app.delete('/delete-all-stores', async (req, res) => {
-  try {
-    await Store.deleteMany({});
-    res.status(200).send('All stores deleted successfully');
-  } catch (err) {
-    res.status(500).send('Error deleting stores from database', err);
-  }
-});
-
 // upload the formData to the database
-app.post('/upload', async (req, res) => {
+app.post('/api/upload', async (req, res) => {
   try {
     const fileStr = req.body.file;
 
     // uploading the image to cloudinary
-    const imageUrl = await cloudinary.uploader.upload(
-      fileStr,
-      {
-        upload_preset: 'bookly',
-      },
-      function (error, result) {
-        if (error) {
-          res.status(500).send({ error: 'Error uploading image', message: error.message });
-        } else {
-          res.status(200).send({ message: 'Image and Form submitted successfully' });
-        }
-      }
-    );
+    const imageObj = await cloudinary.uploader.upload(fileStr, {
+      upload_preset: 'bookly',
+    });
 
-    const secure_url = imageUrl.secure_url;
+    const image_url = imageObj.secure_url;
 
     const store = new Store({
-      file: secure_url,
+      file: image_url,
       title: req.body.title,
       price: req.body.price,
       description: req.body.description,
@@ -84,7 +57,27 @@ app.post('/upload', async (req, res) => {
 
     // save to database
     await store.save();
+
+    res.status(200).send({ message: 'Image uploaded successfully to cloudinary and form successfully submitted to database' });
   } catch (err) {
     res.status(500).send({ error: 'Error uploading form/image, something went wrong', message: err.message });
+  }
+});
+
+app.get('/api/get-all-books', async (req, res) => {
+  try {
+    const result = await Store.find({});
+    res.status(200).send(result);
+  } catch (err) {
+    res.status(500).send({ error: 'Error fetching books from database', message: err.message });
+  }
+});
+
+app.delete('/api/delete-all-stores', async (req, res) => {
+  try {
+    await Store.deleteMany({});
+    res.status(200).send('All stores deleted successfully');
+  } catch (err) {
+    res.status(500).send('Error deleting stores from database', err);
   }
 });

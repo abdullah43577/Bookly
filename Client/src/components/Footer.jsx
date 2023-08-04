@@ -147,9 +147,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <copyright className="text-headerParagraphTexts w-full text-sm xl:text-center">
+      <div className="text-headerParagraphTexts w-full text-sm xl:text-center">
         &copy; {date} Drafted by <span className="text-white">VictorFlow</span> - Powered by <span className="text-white">Webflow</span> || Coded by <span className="text-white">Ayoola</span>
-      </copyright>
+      </div>
     </footer>
   );
 }

@@ -35,15 +35,18 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     // i.e if modalWindow is closed either by the button or the overlay was clicked it empty all inputs
     if (modalWindow === false) {
-      setFormData({
-        file: '',
-        title: '',
-        price: '',
-        description: '',
-        category: '',
-        total_quantity: 1,
+      setFormData((prevValue) => {
+        return {
+          ...prevValue,
+          file: '',
+          title: '',
+          price: '',
+          description: '',
+          category: '',
+        };
       });
 
+      // reset the file input back to an empty string
       if (fileInput.current) {
         fileInput.current.value = '';
       }

@@ -177,8 +177,21 @@ textarea:focus-within {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4rem;
+  place-content: center;
 }
 
 input {
   text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  .booksContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .booksContainer {
+    grid-template-columns: 1fr;
+  }
 }

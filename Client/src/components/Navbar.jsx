@@ -17,9 +17,10 @@ export default function Navbar() {
   //     const res = await fetch(`http://localhost:8080/api/delete-all-stores`, {
   //       method: 'DELETE',
   //     });
-  //     console.log(res);
+  //     const data = await res.json();
+  //     console.log(data.message);
   //   } catch (err) {
-  //     console.log(err);
+  //     console.log(err.message);
   //   }
   // };
 

@@ -36,4 +36,5 @@ yarn-error.log*
 next-env.d.ts
 
 /Client/.next
+/Client/src/components/helper.js
 /Server/.env

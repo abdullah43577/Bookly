@@ -27,6 +27,12 @@ const storeSchema = new Schema(
       type: String,
       required: true,
     },
+
+    total_quantity: {
+      type: Number,
+      default: 1,
+      required: true,
+    },
   },
   { timestamps: true }
 );

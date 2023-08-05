@@ -53,6 +53,7 @@ app.post('/api/upload', async (req, res) => {
       price: req.body.price,
       description: req.body.description,
       category: req.body.category,
+      total_quantity: req.body.total_quantity,
     });
 
     // save to database
@@ -63,6 +64,8 @@ app.post('/api/upload', async (req, res) => {
     res.status(500).send({ error: 'Error uploading form/image, something went wrong', message: err.message });
   }
 });
+
+// app.updateOne('/api/update-book', async (req, res) => {});
 
 app.get('/api/get-all-books', async (req, res) => {
   try {

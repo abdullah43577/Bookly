@@ -10,10 +10,11 @@ import BannerHome from '@/components/Home Components/BannerHome';
 import WhatToLearn from '@/components/Home Components/WhatToLearn';
 import ChapterSection from '@/components/Home Components/Chaptersect';
 import ArticleResource from '@/components/Home Components/ArticleResource';
+import { SERVER } from '@/components/helper';
 
 //? getting data from the server (runs before this page is loaded)
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:8080/api');
+  const res = await fetch(`${SERVER}/api`);
   const data = await res.json();
 
   return {

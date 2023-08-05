@@ -9,6 +9,7 @@ import ContactDYN from '@/components/Contact';
 import StoreDYN from './Routes/StoreDYN';
 import { createContext, useState, useEffect, useRef } from 'react';
 import Swal from 'sweetalert2';
+import { SERVER } from './helper';
 
 export const modal = createContext();
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
     price: '',
     description: '',
     category: '',
+    total_quantity: 1,
   });
 
   useEffect(() => {
@@ -39,9 +41,13 @@ export default function RootLayout({ children }) {
         price: '',
         description: '',
         category: '',
+        total_quantity: 1,
       });
+
+      if (fileInput.current) {
+        fileInput.current.value = '';
+      }
     }
-    fileInput.current.value = '';
   }, [modalWindow]);
 
   // converting image to base64 format
@@ -99,7 +105,7 @@ export default function RootLayout({ children }) {
     setSubmitBtn('Uploading...');
 
     try {
-      const res = await fetch(`http://localhost:8080/api/upload`, {
+      const res = await fetch(`${SERVER}/api/upload`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +115,6 @@ export default function RootLayout({ children }) {
 
       const data = await res.json();
 
-      console.log('res.status', res.status);
       if (res.status !== 200) throw new Error(data.message);
 
       alert('success', 'Submitted Successfully!');
@@ -131,7 +136,7 @@ export default function RootLayout({ children }) {
     if (router.pathname === '/store') {
       const fetchBooks = async () => {
         try {
-          const res = await fetch('http://localhost:8080/api/get-all-books');
+          const res = await fetch(`${SERVER}/api/get-all-books`);
           const data = await res.json();
           setAllUploadedBooks(data);
         } catch (error) {

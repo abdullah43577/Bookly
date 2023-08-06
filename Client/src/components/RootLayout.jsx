@@ -22,6 +22,9 @@ export default function RootLayout({ children }) {
   const [submitBtn, setSubmitBtn] = useState('Upload');
   const [allUploadedBooks, setAllUploadedBooks] = useState([]);
   const fileInput = useRef();
+  const [cartIsOpened, setCartIsOpened] = useState(false);
+  const [itemsInCart, setItemsInCart] = useState(0);
+  const [cartItems, setCartItems] = useState([]); // stores all items in cart
 
   const [formData, setFormData] = useState({
     file: '',
@@ -151,6 +154,22 @@ export default function RootLayout({ children }) {
     }
   }, [router.pathname, modalWindow]);
 
+  // code for cart section
+  const handleCartClick = function () {
+    console.log('cart clicked');
+    setCartIsOpened((prevValue) => !prevValue);
+  };
+
+  const closeCart = function () {
+    console.log('clicked');
+    setCartIsOpened(false);
+  };
+
+  const addToCart = function () {
+    console.log('clicked');
+    setItemsInCart((prevValue) => prevValue + 1);
+  };
+
   // function to render different content based on the route
   useEffect(() => {
     switch (router.pathname) {
@@ -193,7 +212,7 @@ export default function RootLayout({ children }) {
   }, [router.pathname]);
 
   return (
-    <modal.Provider value={{ modalWindow, handleClick, handleSubmit, formData, handleInputChange, submitBtn, handleFileChange, allUploadedBooks, fileInput, setFormData }}>
+    <modal.Provider value={{ modalWindow, handleClick, handleSubmit, formData, handleInputChange, submitBtn, handleFileChange, allUploadedBooks, fileInput, setFormData, handleCartClick, closeCart, cartIsOpened, addToCart, itemsInCart }}>
       <header className={`bg-headerBackground w-full h-auto ${desktopHeaderHeight} relative px-8 pb-6 lg:pb-0 ${margin}`}>
         <div className="inner_header w-full lg:flex items-center justify-center mx-auto container">
           <Navbar />
@@ -207,6 +226,8 @@ export default function RootLayout({ children }) {
 
       <Footer />
       <div className={`overlay absolute top-0 left-0 bottom-0 z-[1000] h-full w-full ${modalWindow && 'visible'}`} onClick={() => setModalWindow(false)}></div>
+
+      <div className={`overlay2 absolute top-0 left-0 bottom-0 z-[1000] h-full w-full ${cartIsOpened && 'visible'}`} onClick={closeCart}></div>
     </modal.Provider>
   );
 }

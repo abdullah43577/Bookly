@@ -65,8 +65,6 @@ app.post('/api/upload', async (req, res) => {
   }
 });
 
-// app.updateOne('/api/update-book', async (req, res) => {});
-
 app.get('/api/get-all-books', async (req, res) => {
   try {
     const result = await Store.find({});

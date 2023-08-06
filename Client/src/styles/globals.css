@@ -150,8 +150,14 @@ textarea:focus-within {
   border: 1px solid gray;
 }
 
+.modalWindow {
+  box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
 .modal,
-.overlay {
+.overlay,
+.overlay2,
+.modalWindow {
   opacity: 0;
   visibility: hidden;
   transition:
@@ -159,7 +165,8 @@ textarea:focus-within {
     visibility 1s ease;
 }
 
-.overlay.visible {
+.overlay.visible,
+.overlay2.visible {
   opacity: 1 !important;
   visibility: visible !important;
   transition-delay: 0s;
@@ -167,7 +174,13 @@ textarea:focus-within {
   backdrop-filter: blur(3px);
 }
 
-.modal.visible {
+.overlay2.visible {
+  opacity: 0.5 !important;
+  background-color: #1b3764 !important;
+}
+
+.modal.visible,
+.modalWindow.visible {
   opacity: 1 !important;
   visibility: visible !important;
   transition-delay: 0s;

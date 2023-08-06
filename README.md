@@ -40,11 +40,11 @@ Follow the instructions below to set up and run the project on your local machin
 
 4. Run the Application
 
-`cd ../frontend`
+`cd client`
 `npm run dev`
 
-`cd ../backend`
-`npm start`
+`cd server`
+`npm run dev`
 
 5. Access the website: Open your web browser and visit http://localhost:3000 to explore the author's website.
 

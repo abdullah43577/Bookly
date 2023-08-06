@@ -14,7 +14,7 @@ import { SERVER } from '@/components/helper';
 
 //? getting data from the server (runs before this page is loaded)
 export const getStaticProps = async () => {
-  const res = await fetch(`${SERVER}/api`);
+  const res = await fetch(SERVER);
   const data = await res.json();
 
   return {

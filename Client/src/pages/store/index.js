@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import line2 from '../../public/images/line2.png';
+import line2 from '../../../public/images/line2.png';
 import { useContext } from 'react';
-import { modal } from '../components/RootLayout';
+import { modal } from '../../components/RootLayout';
 import AuthorBooks from '@/components/AuthorBooks';
 
 export default function store() {

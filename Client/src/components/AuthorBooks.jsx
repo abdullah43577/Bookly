@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import bullet from '../../public/images/Point.png';
+import Link from 'next/link';
 
 export default function AuthorBooks({ uploadedBooks }) {
   const result = uploadedBooks?.map((uploadedBooks, index) => {
@@ -18,9 +19,9 @@ export default function AuthorBooks({ uploadedBooks }) {
             <Image src={bullet} alt="bullet" />
             <p className="cardoFont font-bold text-lg lg:text-xl capitalize text-headerBackground">{uploadedBooks.category}</p>
           </div>
-          <button className="cardoFont border border-CTA px-4 py-2 hover:bg-CTA w-full lg:w-auto" id={uploadedBooks._id}>
-            Order Today
-          </button>
+          <Link href={`/store/${uploadedBooks._id}`}>
+            <button className="cardoFont border border-CTA px-4 py-2 hover:bg-CTA w-full lg:w-auto">Order Today</button>
+          </Link>
         </div>
       </div>
     );

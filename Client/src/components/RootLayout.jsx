@@ -108,7 +108,7 @@ export default function RootLayout({ children }) {
     setSubmitBtn('Uploading...');
 
     try {
-      const res = await fetch(`${SERVER}/api/upload`, {
+      const res = await fetch(`${SERVER}/upload`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ export default function RootLayout({ children }) {
     if (router.pathname === '/store') {
       const fetchBooks = async () => {
         try {
-          const res = await fetch(`${SERVER}/api/get-all-books`);
+          const res = await fetch(`${SERVER}/get-all-books`);
           const data = await res.json();
           setAllUploadedBooks(data);
         } catch (error) {
@@ -172,12 +172,6 @@ export default function RootLayout({ children }) {
         setMargin('');
         break;
 
-      case '/store':
-        setCurrentRoute(<StoreDYN />);
-        setDesktopHeaderHeight('lg:h-[50vh]');
-        setMargin('');
-        break;
-
       case '/contact':
         setCurrentRoute(<ContactDYN />);
         setDesktopHeaderHeight('lg:h-[50vh]');
@@ -185,15 +179,21 @@ export default function RootLayout({ children }) {
         break;
 
       default:
-        setCurrentRoute(<HomeDYN />);
-        setDesktopHeaderHeight('lg:h-screen');
-        setMargin('mb-32');
+        if (router.pathname.startsWith('/store')) {
+          setCurrentRoute(<StoreDYN />);
+          setDesktopHeaderHeight('lg:h-[50vh]');
+          setMargin('');
+        } else {
+          setCurrentRoute(<HomeDYN />);
+          setDesktopHeaderHeight('lg:h-screen');
+          setMargin('mb-32');
+        }
         break;
     }
   }, [router.pathname]);
 
   return (
-    <modal.Provider value={{ modalWindow, handleClick, handleSubmit, formData, handleInputChange, submitBtn, handleFileChange, allUploadedBooks, fileInput }}>
+    <modal.Provider value={{ modalWindow, handleClick, handleSubmit, formData, handleInputChange, submitBtn, handleFileChange, allUploadedBooks, fileInput, setFormData }}>
       <header className={`bg-headerBackground w-full h-auto ${desktopHeaderHeight} relative px-8 pb-6 lg:pb-0 ${margin}`}>
         <div className="inner_header w-full lg:flex items-center justify-center mx-auto container">
           <Navbar />

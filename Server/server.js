@@ -76,6 +76,16 @@ app.get('/api/get-all-books', async (req, res) => {
   }
 });
 
+app.get('/api/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await Store.findById(id);
+    res.status(200).send(result);
+  } catch (err) {
+    res.status(500).send({ error: 'Error fetching data from database', message: err.message });
+  }
+});
+
 app.delete('/api/delete-all-stores', async (req, res) => {
   try {
     await Store.deleteMany({});

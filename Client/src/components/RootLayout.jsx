@@ -23,9 +23,9 @@ export default function RootLayout({ children }) {
   const [allUploadedBooks, setAllUploadedBooks] = useState([]);
   const fileInput = useRef();
   const [cartIsOpened, setCartIsOpened] = useState(false);
-  const [itemsInCart, setItemsInCart] = useState(0);
-  const [cartItems, setCartItems] = useState([]); // stores all items in cart
+  const [noOfItemsInCart, setNoOfItemsInCart] = useState(0);
 
+  const [cartItems, setCartItems] = useState([]); // stores all items in cart
   const [formData, setFormData] = useState({
     file: '',
     title: '',
@@ -156,19 +156,45 @@ export default function RootLayout({ children }) {
 
   // code for cart section
   const handleCartClick = function () {
-    console.log('cart clicked');
     setCartIsOpened((prevValue) => !prevValue);
   };
 
   const closeCart = function () {
-    console.log('clicked');
     setCartIsOpened(false);
   };
 
-  const addToCart = function () {
-    console.log('clicked');
-    setItemsInCart((prevValue) => prevValue + 1);
+  const addToCart = function (bookInfo) {
+    // checking if the item already exist in the cart
+    const isExisting = cartItems.some((obj) => obj._id === bookInfo._id);
+
+    if (isExisting) {
+      setCartItems((prevValue) => prevValue.map((obj) => (obj._id === bookInfo._id ? { ...obj, total_quantity: formData.total_quantity } : obj)));
+
+      alert('success', 'Successfully updated item in cart!');
+    } else {
+      setCartItems((prevValue) => [...prevValue, bookInfo]);
+      setNoOfItemsInCart((prevValue) => prevValue + 1);
+      alert('success', 'Item successfully added to cart!');
+    }
   };
+
+  // useEffect(() => console.log(cartItems), [cartItems]);
+
+  // sets data to local storage
+  useEffect(() => {
+    if (cartItems.length) {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+  }, [cartItems]);
+
+  // get data from local storage
+  useEffect(() => {
+    const storedCartItems = localStorage.getItem('cartItems');
+    const parsedArray = storedCartItems ? JSON.parse(storedCartItems) : [];
+    if (parsedArray && parsedArray.length) {
+      setCartItems(parsedArray);
+    }
+  }, []);
 
   // function to render different content based on the route
   useEffect(() => {
@@ -212,7 +238,27 @@ export default function RootLayout({ children }) {
   }, [router.pathname]);
 
   return (
-    <modal.Provider value={{ modalWindow, handleClick, handleSubmit, formData, handleInputChange, submitBtn, handleFileChange, allUploadedBooks, fileInput, setFormData, handleCartClick, closeCart, cartIsOpened, addToCart, itemsInCart }}>
+    <modal.Provider
+      value={{
+        modalWindow,
+        handleClick,
+        handleSubmit,
+        formData,
+        handleInputChange,
+        submitBtn,
+        handleFileChange,
+        allUploadedBooks,
+        fileInput,
+        setFormData,
+        handleCartClick,
+        closeCart,
+        cartIsOpened,
+        addToCart,
+        noOfItemsInCart,
+        cartItems,
+        setCartItems,
+      }}
+    >
       <header className={`bg-headerBackground w-full h-auto ${desktopHeaderHeight} relative px-8 pb-6 lg:pb-0 ${margin}`}>
         <div className="inner_header w-full lg:flex items-center justify-center mx-auto container">
           <Navbar />

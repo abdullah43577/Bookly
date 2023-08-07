@@ -1,7 +1,7 @@
 import { SERVER } from '@/components/helper';
 import cart from '../../../public/images/Vector2.png';
 import Image from 'next/image';
-import { useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import { modal } from '@/components/RootLayout';
 
 export const getStaticPaths = async function () {
@@ -40,17 +40,65 @@ export const getStaticProps = async function ({ params }) {
 };
 
 export default function Details({ bookInfo }) {
-  const { formData, setFormData, closeCart, cartIsOpened, addToCart } = useContext(modal);
+  const { formData, setFormData, closeCart, cartIsOpened, addToCart, cartItems, setCartItems } = useContext(modal);
 
   const handleDecrement = function () {
     if (formData.total_quantity > 1) {
       setFormData({ ...formData, total_quantity: formData.total_quantity - 1 });
+
+      setCartItems((prevItems) => prevItems.map((obj) => (obj._id === bookInfo._id ? { ...obj, total_quantity: formData.total_quantity - 1 } : obj)));
     }
   };
 
   const handleIncrement = function () {
     setFormData({ ...formData, total_quantity: formData.total_quantity + 1 });
+
+    setCartItems((prevItems) => prevItems.map((obj) => (obj._id === bookInfo._id ? { ...obj, total_quantity: formData.total_quantity + 1 } : obj)));
   };
+
+  const handleAddToCart = function () {
+    addToCart(bookInfo);
+  };
+
+  const cartDetails = cartItems.map((obj, index) => {
+    return (
+      <Fragment key={index}>
+        <div className="flex items-start px-8 py-6 gap-[2rem] border-b border-mainPGParagraphTxt">
+          <img src={obj.file} alt="book image" width={150} />
+
+          <div className="w-full">
+            <div className="flex items-center justify-between my-2">
+              <div>
+                <h2 className="text-headerBackground cardoFont font-bold capitalize">{obj.title}</h2>
+                <p className="text-mainPGParagraphTxt">${obj.price}</p>
+              </div>
+
+              <div className="border border-CTA text-center w-[80px] px-3 py-1 flex items-center justify-between">
+                <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={handleDecrement}>
+                  -
+                </div>
+                <p>{formData.total_quantity}</p>
+                <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={handleIncrement}>
+                  +
+                </div>
+              </div>
+            </div>
+
+            <button className="bg-headerBackground text-white font-bold cardoFont px-2 py-1 my-2">Remove</button>
+          </div>
+        </div>
+
+        <div className="w-full px-8 py-6">
+          <div className="flex items-center justify-between my-2">
+            <p className="cardoFont text-headerBackground">Sub-Total</p>
+            <p className="text-headerBackground font-bold">${obj.price * obj.total_quantity}USD</p>
+          </div>
+
+          <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
+        </div>
+      </Fragment>
+    );
+  });
 
   return (
     <>
@@ -101,7 +149,8 @@ export default function Details({ bookInfo }) {
                   +
                 </div>
               </div>
-              <button className="cardoFont bg-CTA px-6 py-3 text-headerBackground font-bold" onClick={addToCart}>
+
+              <button className="cardoFont bg-CTA px-6 py-3 text-headerBackground font-bold" onClick={handleAddToCart}>
                 <Image src={cart} alt="cart icon" className="inline" /> Add to cart
               </button>
             </div>
@@ -139,39 +188,7 @@ export default function Details({ bookInfo }) {
             &#10006;
           </p>
         </div>
-        <div className="flex items-start px-8 py-6 gap-[2rem] border-b border-mainPGParagraphTxt">
-          <img src={bookInfo.file} alt="book image" width={150} />
-
-          <div className="w-full">
-            <div className="flex items-center justify-between my-2">
-              <div>
-                <h2 className="text-headerBackground cardoFont font-bold capitalize">{bookInfo.title}</h2>
-                <p className="text-mainPGParagraphTxt">${bookInfo.price}</p>
-              </div>
-
-              <div className="border border-CTA text-center w-[80px] px-3 py-1 flex items-center justify-between">
-                <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={handleDecrement}>
-                  -
-                </div>
-                <p>{formData.total_quantity}</p>
-                <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={handleIncrement}>
-                  +
-                </div>
-              </div>
-            </div>
-
-            <button className="bg-headerBackground text-white font-bold cardoFont px-2 py-1 my-2">Remove</button>
-          </div>
-        </div>
-
-        <div className="w-full px-8 py-6">
-          <div className="flex items-center justify-between my-2">
-            <p className="cardoFont text-headerBackground">Sub-Total</p>
-            <p className="text-headerBackground font-bold">${bookInfo.price * formData.total_quantity}USD</p>
-          </div>
-
-          <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
-        </div>
+        {cartDetails.length && cartDetails}
       </div>
     </>
   );

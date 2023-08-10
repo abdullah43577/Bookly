@@ -167,25 +167,27 @@ export default function RootLayout({ children }) {
     // checking if the item already exist in the cart
     const isExisting = cartItems.some((obj) => obj._id === bookInfo._id);
 
+    const newObj = cartItems.find((obj) => obj._id === bookInfo._id);
+
     if (isExisting) {
-      setCartItems((prevValue) => prevValue.map((obj) => (obj._id === bookInfo._id ? { ...obj, total_quantity: formData.total_quantity } : obj)));
+      setCartItems((prevValue) => prevValue.map((obj) => (obj._id === bookInfo._id ? { ...obj, total_quantity: newObj.total_quantity } : obj)));
 
       alert('success', 'Successfully updated item in cart!');
     } else {
       setCartItems((prevValue) => [...prevValue, bookInfo]);
-      setNoOfItemsInCart((prevValue) => prevValue + 1);
       alert('success', 'Item successfully added to cart!');
     }
   };
 
-  // useEffect(() => console.log(cartItems), [cartItems]);
+  useEffect(() => setNoOfItemsInCart(cartItems.length), [cartItems]);
 
   // sets data to local storage
   useEffect(() => {
-    if (cartItems.length) {
+    if (cartItems.length || noOfItemsInCart > 0) {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      localStorage.setItem('noOfItemsInCart', JSON.stringify(noOfItemsInCart));
     }
-  }, [cartItems]);
+  }, [cartItems, noOfItemsInCart]);
 
   // get data from local storage
   useEffect(() => {
@@ -193,6 +195,12 @@ export default function RootLayout({ children }) {
     const parsedArray = storedCartItems ? JSON.parse(storedCartItems) : [];
     if (parsedArray && parsedArray.length) {
       setCartItems(parsedArray);
+    }
+
+    const totalNumberOfItems = localStorage.getItem('noOfItemsInCart');
+    const newlyParsedNo = totalNumberOfItems ? JSON.parse(totalNumberOfItems) : [];
+    if (newlyParsedNo && newlyParsedNo > 0) {
+      setNoOfItemsInCart(newlyParsedNo);
     }
   }, []);
 

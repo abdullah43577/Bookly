@@ -19,17 +19,14 @@ app.use(express.json({ limit: '50mb' })); // parse json data from the request bo
 // connect to mongoDB
 const dbURI = `mongodb+srv://officialayo540:bookly1234@bookly.sny5ebx.mongodb.net/Bookly-Database?retryWrites=true&w=majority`;
 
-const database = async function () {
+(async function () {
   try {
     await mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
     app.listen(PORT, () => console.log(`server started on http://localhost:${PORT}`));
   } catch (err) {
     console.log('mongodb not connected', err);
   }
-};
-
-database();
-// app.listen(8080, () => console.log('connected'));
+})();
 
 app.get('/api', (req, res) => {
   res.status(200).json({ message: 'Hello World!' });

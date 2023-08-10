@@ -70,7 +70,7 @@ export default function Navbar() {
         <div className="relative" onClick={handleCartClick}>
           <Image src={cart} alt="cart icon" height={21} width={22} className="cursor-pointer" />
 
-          <span className="absolute -top-1 -right-1 bg-CTA text-white rounded-full w-4 h-4 text-xs flex items-center cardoFont justify-center">{noOfItemsInCart}</span>
+          {noOfItemsInCart > 0 && <span className="absolute -top-1 -right-1 bg-CTA text-white rounded-full w-4 h-4 text-xs flex items-center cardoFont justify-center">{noOfItemsInCart}</span>}
         </div>
 
         <button className="bg-CTA px-3 py-2 text-headerBackground font-bold ml-6 cardoFont">Order Today</button>

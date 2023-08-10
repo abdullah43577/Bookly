@@ -1,7 +1,7 @@
 import { SERVER } from '@/components/helper';
 import cart from '../../../public/images/Vector2.png';
 import Image from 'next/image';
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import { modal } from '@/components/RootLayout';
 
 export const getStaticPaths = async function () {
@@ -40,27 +40,38 @@ export const getStaticProps = async function ({ params }) {
 };
 
 export default function Details({ bookInfo }) {
-  const { formData, setFormData, closeCart, cartIsOpened, addToCart, cartItems, setCartItems } = useContext(modal);
+  const { closeCart, cartIsOpened, addToCart, cartItems, setCartItems, formData, setFormData } = useContext(modal);
+
+  const [newObj, setNewObj] = useState(null);
+
+  useEffect(() => {
+    const foundObject = cartItems.find((obj) => obj._id === bookInfo._id);
+    setNewObj(foundObject);
+  }, [cartItems]);
 
   const handleDecrement = function () {
-    if (formData.total_quantity > 1) {
-      setFormData({ ...formData, total_quantity: formData.total_quantity - 1 });
-
-      setCartItems((prevItems) => prevItems.map((obj) => (obj._id === bookInfo._id ? { ...obj, total_quantity: formData.total_quantity - 1 } : obj)));
+    if (newObj) {
+      if (newObj.total_quantity > 1) {
+        setCartItems((prevValue) => prevValue.map((obj) => obj._id === bookInfo._id && { ...obj, total_quantity: newObj.total_quantity - 1 }));
+      }
+    } else {
+      setFormData((prevValue) => ({ ...prevValue, total_quantity: prevValue.total_quantity - 1 }));
     }
   };
 
   const handleIncrement = function () {
-    setFormData({ ...formData, total_quantity: formData.total_quantity + 1 });
-
-    setCartItems((prevItems) => prevItems.map((obj) => (obj._id === bookInfo._id ? { ...obj, total_quantity: formData.total_quantity + 1 } : obj)));
+    if (newObj) {
+      setCartItems((prevValue) => prevValue.map((obj) => obj._id === bookInfo._id && { ...obj, total_quantity: newObj.total_quantity + 1 }));
+    } else {
+      setFormData((prevValue) => ({ ...prevValue, total_quantity: prevValue.total_quantity + 1 }));
+    }
   };
 
   const handleAddToCart = function () {
     addToCart(bookInfo);
   };
 
-  const cartDetails = cartItems.map((obj, index) => {
+  const cartDetails = cartItems?.map((obj, index) => {
     return (
       <Fragment key={index}>
         <div className="flex items-start px-8 py-6 gap-[2rem] border-b border-mainPGParagraphTxt">
@@ -77,7 +88,9 @@ export default function Details({ bookInfo }) {
                 <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={handleDecrement}>
                   -
                 </div>
-                <p>{formData.total_quantity}</p>
+
+                <p>{obj.total_quantity}</p>
+
                 <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={handleIncrement}>
                   +
                 </div>
@@ -144,7 +157,9 @@ export default function Details({ bookInfo }) {
                 <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={handleDecrement}>
                   -
                 </div>
-                <p>{formData.total_quantity}</p>
+
+                <p>{newObj?.total_quantity || formData.total_quantity}</p>
+
                 <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={handleIncrement}>
                   +
                 </div>
@@ -188,7 +203,7 @@ export default function Details({ bookInfo }) {
             &#10006;
           </p>
         </div>
-        {cartDetails.length && cartDetails}
+        {cartDetails.length ? cartDetails : <p className="cardoFont text-lg text-mainPGParagraphTxt text-center">There are no items in your cart at this time. You can start by adding items to you cart!</p>}
       </div>
     </>
   );

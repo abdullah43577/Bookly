@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
   const [submitBtn, setSubmitBtn] = useState('Upload');
   const [allUploadedBooks, setAllUploadedBooks] = useState([]);
   const fileInput = useRef();
+  const initialFormValue = useRef();
   const [cartIsOpened, setCartIsOpened] = useState(false);
   const [noOfItemsInCart, setNoOfItemsInCart] = useState(0);
 
@@ -174,8 +175,15 @@ export default function RootLayout({ children }) {
 
       alert('success', 'Successfully updated item in cart!');
     } else {
-      setCartItems((prevValue) => [...prevValue, bookInfo]);
-      alert('success', 'Item successfully added to cart!');
+      // updating the bookinfo object with the total_quantity if modified on first visit of the details page since cartItems is not existent at this point
+      if (initialFormValue.current !== bookInfo.total_quantity) {
+        bookInfo.total_quantity = initialFormValue.current.textContent;
+        setCartItems((prevValue) => [...prevValue, bookInfo]);
+        alert('success', 'Item successfully added to cart!');
+      } else {
+        setCartItems((prevValue) => [...prevValue, bookInfo]);
+        alert('success', 'Item successfully added to cart!');
+      }
     }
   };
 
@@ -265,6 +273,7 @@ export default function RootLayout({ children }) {
         noOfItemsInCart,
         cartItems,
         setCartItems,
+        initialFormValue,
       }}
     >
       <header className={`bg-headerBackground w-full h-auto ${desktopHeaderHeight} relative px-8 pb-6 lg:pb-0 ${margin}`}>

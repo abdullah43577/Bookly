@@ -40,7 +40,7 @@ export const getStaticProps = async function ({ params }) {
 };
 
 export default function Details({ bookInfo }) {
-  const { closeCart, cartIsOpened, addToCart, cartItems, setCartItems, formData, setFormData } = useContext(modal);
+  const { closeCart, cartIsOpened, addToCart, cartItems, setCartItems, formData, setFormData, initialFormValue } = useContext(modal);
 
   const [newObj, setNewObj] = useState(null);
 
@@ -52,23 +52,41 @@ export default function Details({ bookInfo }) {
   const handleDecrement = function () {
     if (newObj) {
       if (newObj.total_quantity > 1) {
-        setCartItems((prevValue) => prevValue.map((obj) => obj._id === bookInfo._id && { ...obj, total_quantity: newObj.total_quantity - 1 }));
+        setCartItems((prevValue) => prevValue.map((obj) => (obj._id === bookInfo._id ? { ...obj, total_quantity: +newObj.total_quantity - 1 } : obj)));
       }
     } else {
-      setFormData((prevValue) => ({ ...prevValue, total_quantity: prevValue.total_quantity - 1 }));
+      if (formData.total_quantity > 1) {
+        setFormData((prevValue) => ({ ...prevValue, total_quantity: +prevValue.total_quantity - 1 }));
+      }
     }
   };
 
   const handleIncrement = function () {
     if (newObj) {
-      setCartItems((prevValue) => prevValue.map((obj) => obj._id === bookInfo._id && { ...obj, total_quantity: newObj.total_quantity + 1 }));
+      setCartItems((prevValue) => prevValue.map((obj) => (obj._id === bookInfo._id ? { ...obj, total_quantity: +newObj.total_quantity + 1 } : obj)));
     } else {
-      setFormData((prevValue) => ({ ...prevValue, total_quantity: prevValue.total_quantity + 1 }));
+      setFormData((prevValue) => ({ ...prevValue, total_quantity: +prevValue.total_quantity + 1 }));
     }
   };
 
   const handleAddToCart = function () {
+    // bookinfo is the current object that is being displayed on the browser
     addToCart(bookInfo);
+  };
+
+  // beta phase
+  const handleIncrement2 = function (obj) {
+    const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
+
+    setCartItems((prevValue) => prevValue.map((item, i) => (i === index ? { ...item, total_quantity: +item.total_quantity + 1 } : item)));
+  };
+
+  const handleDecrement2 = function (obj) {
+    console.log('minus clicked', obj);
+
+    const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
+
+    setCartItems((prevValue) => prevValue.map((item, i) => (i === index ? { ...item, total_quantity: +item.total_quantity - 1 } : item)));
   };
 
   const cartDetails = cartItems?.map((obj, index) => {
@@ -85,13 +103,13 @@ export default function Details({ bookInfo }) {
               </div>
 
               <div className="border border-CTA text-center w-[80px] px-3 py-1 flex items-center justify-between">
-                <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={handleDecrement}>
+                <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={() => handleDecrement2(obj)}>
                   -
                 </div>
 
                 <p>{obj.total_quantity}</p>
 
-                <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={handleIncrement}>
+                <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={() => handleIncrement2(obj)}>
                   +
                 </div>
               </div>
@@ -104,7 +122,7 @@ export default function Details({ bookInfo }) {
         <div className="w-full px-8 py-6">
           <div className="flex items-center justify-between my-2">
             <p className="cardoFont text-headerBackground">Sub-Total</p>
-            <p className="text-headerBackground font-bold">${obj.price * obj.total_quantity}USD</p>
+            <p className="text-headerBackground font-bold">${(obj.price * obj.total_quantity).toFixed(1)} USD</p>
           </div>
 
           <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
@@ -158,7 +176,7 @@ export default function Details({ bookInfo }) {
                   -
                 </div>
 
-                <p>{newObj?.total_quantity || formData.total_quantity}</p>
+                <p ref={initialFormValue}>{newObj?.total_quantity || formData.total_quantity}</p>
 
                 <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={handleIncrement}>
                   +

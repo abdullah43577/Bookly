@@ -43,6 +43,12 @@ export default function Details({ bookInfo }) {
   const { closeCart, cartIsOpened, addToCart, cartItems, setCartItems, formData, setFormData, initialFormValue } = useContext(modal);
 
   const [newObj, setNewObj] = useState(null);
+  const [totalCost, setTotalCost] = useState(null);
+
+  useEffect(() => {
+    const total = cartItems.map((obj) => obj.price * obj.total_quantity).reduce((acc, curValue) => acc + curValue, 0);
+    setTotalCost(total);
+  }, [cartItems]);
 
   useEffect(() => {
     const foundObject = cartItems.find((obj) => obj._id === bookInfo._id);
@@ -74,7 +80,6 @@ export default function Details({ bookInfo }) {
     addToCart(bookInfo);
   };
 
-  // beta phase
   const handleIncrement2 = function (obj) {
     const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
 
@@ -82,52 +87,41 @@ export default function Details({ bookInfo }) {
   };
 
   const handleDecrement2 = function (obj) {
-    console.log('minus clicked', obj);
+    if (obj.total_quantity > 1) {
+      const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
 
-    const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
-
-    setCartItems((prevValue) => prevValue.map((item, i) => (i === index ? { ...item, total_quantity: +item.total_quantity - 1 } : item)));
+      setCartItems((prevValue) => prevValue.map((item, i) => (i === index ? { ...item, total_quantity: +item.total_quantity - 1 } : item)));
+    }
   };
 
   const cartDetails = cartItems?.map((obj, index) => {
     return (
-      <Fragment key={index}>
-        <div className="flex items-start px-8 py-6 gap-[2rem] border-b border-mainPGParagraphTxt">
-          <img src={obj.file} alt="book image" width={150} />
+      <div key={index} className="flex items-start px-8 py-6 gap-[2rem] border-b border-mainPGParagraphTxt">
+        <img src={obj.file} alt="book image" width={150} />
 
-          <div className="w-full">
-            <div className="flex items-center justify-between my-2">
-              <div>
-                <h2 className="text-headerBackground cardoFont font-bold capitalize">{obj.title}</h2>
-                <p className="text-mainPGParagraphTxt">${obj.price}</p>
-              </div>
-
-              <div className="border border-CTA text-center w-[80px] px-3 py-1 flex items-center justify-between">
-                <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={() => handleDecrement2(obj)}>
-                  -
-                </div>
-
-                <p>{obj.total_quantity}</p>
-
-                <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={() => handleIncrement2(obj)}>
-                  +
-                </div>
-              </div>
+        <div className="w-full">
+          <div className="flex items-center justify-between my-2">
+            <div>
+              <h2 className="text-headerBackground cardoFont font-bold capitalize">{obj.title}</h2>
+              <p className="text-mainPGParagraphTxt">${obj.price}</p>
             </div>
 
-            <button className="bg-headerBackground text-white font-bold cardoFont px-2 py-1 my-2">Remove</button>
-          </div>
-        </div>
+            <div className="border border-CTA text-center w-[80px] px-3 py-1 flex items-center justify-between">
+              <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={() => handleDecrement2(obj)}>
+                -
+              </div>
 
-        <div className="w-full px-8 py-6">
-          <div className="flex items-center justify-between my-2">
-            <p className="cardoFont text-headerBackground">Sub-Total</p>
-            <p className="text-headerBackground font-bold">${(obj.price * obj.total_quantity).toFixed(1)} USD</p>
+              <p>{obj.total_quantity}</p>
+
+              <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={() => handleIncrement2(obj)}>
+                +
+              </div>
+            </div>
           </div>
 
-          <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
+          <button className="bg-headerBackground text-white font-bold cardoFont px-2 py-1 my-2">Remove</button>
         </div>
-      </Fragment>
+      </div>
     );
   });
 
@@ -222,6 +216,16 @@ export default function Details({ bookInfo }) {
           </p>
         </div>
         {cartDetails.length ? cartDetails : <p className="cardoFont text-lg text-mainPGParagraphTxt text-center">There are no items in your cart at this time. You can start by adding items to you cart!</p>}
+
+        {/* beta phase */}
+        <div className="w-full px-8 py-6">
+          <div className="flex items-center justify-between my-2">
+            <p className="cardoFont text-headerBackground">Sub-Total</p>
+            <p className="text-headerBackground font-bold">${totalCost.toFixed(2)} USD</p>
+          </div>
+
+          <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
+        </div>
       </div>
     </>
   );

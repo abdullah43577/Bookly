@@ -1,8 +1,9 @@
 import { SERVER } from '@/components/helper';
 import cart from '../../../public/images/Vector2.png';
 import Image from 'next/image';
-import { Fragment, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { modal } from '@/components/RootLayout';
+import { alert } from '@/components/helper';
 
 export const getStaticPaths = async function () {
   try {
@@ -94,6 +95,12 @@ export default function Details({ bookInfo }) {
     }
   };
 
+  const removeItemFromCart = function (obj) {
+    const newArray = cartItems.filter((item) => item._id !== obj._id);
+    setCartItems(newArray);
+    alert('success', 'Item removed from cart');
+  };
+
   const cartDetails = cartItems?.map((obj, index) => {
     return (
       <div key={index} className="flex items-start px-8 py-6 gap-[2rem] border-b border-mainPGParagraphTxt">
@@ -119,7 +126,9 @@ export default function Details({ bookInfo }) {
             </div>
           </div>
 
-          <button className="bg-headerBackground text-white font-bold cardoFont px-2 py-1 my-2">Remove</button>
+          <button className="bg-headerBackground text-white font-bold cardoFont px-2 py-1 my-2" onClick={() => removeItemFromCart(obj)}>
+            Remove
+          </button>
         </div>
       </div>
     );
@@ -221,7 +230,7 @@ export default function Details({ bookInfo }) {
         <div className="w-full px-8 py-6">
           <div className="flex items-center justify-between my-2">
             <p className="cardoFont text-headerBackground">Sub-Total</p>
-            <p className="text-headerBackground font-bold">${totalCost.toFixed(2)} USD</p>
+            <p className="text-headerBackground font-bold">${totalCost?.toFixed(2)} USD</p>
           </div>
 
           <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>

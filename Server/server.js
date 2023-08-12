@@ -4,8 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const PORT = process.env.PORT; // client server runs at port 3000
 const mongoose = require('mongoose');
-const Store = require('./models/store');
-const { cloudinary } = require('./utils/cloudinary');
+const apiRoutes = require('./routes/apiRoutes');
 
 // express app
 const app = express();
@@ -28,64 +27,5 @@ const dbURI = `mongodb+srv://officialayo540:bookly1234@bookly.sny5ebx.mongodb.ne
   }
 })();
 
-app.get('/api', (req, res) => {
-  res.status(200).json({ message: 'Hello World!' });
-});
-
-// upload the formData to the database
-app.post('/api/upload', async (req, res) => {
-  try {
-    const fileStr = req.body.file;
-
-    // uploading the image to cloudinary
-    const imageObj = await cloudinary.uploader.upload(fileStr, {
-      upload_preset: 'bookly',
-    });
-
-    const image_url = imageObj.secure_url;
-
-    const store = new Store({
-      file: image_url,
-      title: req.body.title,
-      price: req.body.price,
-      description: req.body.description,
-      category: req.body.category,
-      total_quantity: req.body.total_quantity,
-    });
-
-    // save to database
-    await store.save();
-
-    res.status(200).send({ message: 'Image uploaded successfully to cloudinary and form successfully submitted to database' });
-  } catch (err) {
-    res.status(500).send({ error: 'Error uploading form/image, something went wrong', message: err.message });
-  }
-});
-
-app.get('/api/get-all-books', async (req, res) => {
-  try {
-    const result = await Store.find({});
-    res.status(200).send(result);
-  } catch (err) {
-    res.status(500).send({ error: 'Error fetching books from database', message: err.message });
-  }
-});
-
-app.get('/api/:id', async (req, res) => {
-  try {
-    const id = req.params.id;
-    const result = await Store.findById(id);
-    res.status(200).send(result);
-  } catch (err) {
-    res.status(500).send({ error: 'Error fetching data from database', message: err.message });
-  }
-});
-
-app.delete('/api/delete-all-stores', async (req, res) => {
-  try {
-    await Store.deleteMany({});
-    res.status(200).send('All stores deleted successfully');
-  } catch (err) {
-    res.status(500).send('Error deleting stores from database', err);
-  }
-});
+// API routes
+app.use(apiRoutes);

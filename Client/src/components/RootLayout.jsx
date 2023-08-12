@@ -24,7 +24,6 @@ export default function RootLayout({ children }) {
   const initialFormValue = useRef();
   const [cartIsOpened, setCartIsOpened] = useState(false);
   const [noOfItemsInCart, setNoOfItemsInCart] = useState(0);
-
   const [cartItems, setCartItems] = useState([]); // stores all items in cart
   const [formData, setFormData] = useState({
     file: '',
@@ -171,11 +170,8 @@ export default function RootLayout({ children }) {
 
   // sets data to local storage
   useEffect(() => {
-    if (cartItems.length || noOfItemsInCart > 0) {
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      localStorage.setItem('noOfItemsInCart', JSON.stringify(noOfItemsInCart));
-    }
-  }, [cartItems, noOfItemsInCart]);
+    if (cartItems.length) localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   // get data from local storage
   useEffect(() => {
@@ -184,13 +180,9 @@ export default function RootLayout({ children }) {
     if (parsedArray && parsedArray.length) {
       setCartItems(parsedArray);
     }
-
-    const totalNumberOfItems = localStorage.getItem('noOfItemsInCart');
-    const newlyParsedNo = totalNumberOfItems ? JSON.parse(totalNumberOfItems) : [];
-    if (newlyParsedNo && newlyParsedNo > 0) {
-      setNoOfItemsInCart(newlyParsedNo);
-    }
   }, []);
+
+  useEffect(() => console.log(cartItems), [cartItems]);
 
   // function to render different content based on the route
   useEffect(() => {

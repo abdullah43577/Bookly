@@ -99,6 +99,7 @@ export default function Details({ bookInfo }) {
     const newArray = cartItems.filter((item) => item._id !== obj._id);
     setCartItems(newArray);
     alert('success', 'Item removed from cart');
+    localStorage.setItem('cartItems', JSON.stringify(newArray));
   };
 
   const cartDetails = cartItems?.map((obj, index) => {
@@ -217,17 +218,16 @@ export default function Details({ bookInfo }) {
       </section>
 
       {/* modal window  for whenever the cart is clicked*/}
-      <div className={`modalWindow w-[480px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md bg-white ${cartIsOpened && 'visible'}`}>
+      <div className={`modalWindow w-[480px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md bg-white ${cartIsOpened && 'visible'}`}>
         <div className="bg-CTA w-full flex items-center justify-between px-4 py-3 rounded-t-lg">
           <h2 className="text-headerBackground font-bold cardoFont text-xl">Your Cart</h2>
           <p className="text-headerBackground cursor-pointer" onClick={closeCart}>
             &#10006;
           </p>
         </div>
-        {cartDetails.length ? cartDetails : <p className="cardoFont text-lg text-mainPGParagraphTxt text-center">There are no items in your cart at this time. You can start by adding items to you cart!</p>}
+        {cartDetails.length ? cartDetails : <p className="cardoFont text-lg text-mainPGParagraphTxt text-center p-6">There are no items in your cart at this time. You can start by adding items to you cart!</p>}
 
-        {/* beta phase */}
-        <div className="w-full px-8 py-6">
+        <div className={`w-full px-8 py-6 ${cartItems.length ? 'block' : 'hidden'}`}>
           <div className="flex items-center justify-between my-2">
             <p className="cardoFont text-headerBackground">Sub-Total</p>
             <p className="text-headerBackground font-bold">${totalCost?.toFixed(2)} USD</p>

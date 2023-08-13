@@ -3,7 +3,6 @@ import cart from '../../../public/images/Vector2.png';
 import Image from 'next/image';
 import { useContext, useEffect, useState } from 'react';
 import { modal } from '@/components/RootLayout';
-import { alert } from '@/components/helper';
 
 export const getStaticPaths = async function () {
   try {
@@ -41,19 +40,10 @@ export const getStaticProps = async function ({ params }) {
 };
 
 export default function Details({ bookInfo }) {
-  const { closeCart, cartIsOpened, addToCart, cartItems, setCartItems, formData, setFormData, initialFormValue } = useContext(modal);
-
-  const [newObj, setNewObj] = useState(null);
-  const [totalCost, setTotalCost] = useState(null);
+  const { addToCart, cartItems, formData, setFormData, setCartItems, initialFormValue, findCurObj, newObj } = useContext(modal);
 
   useEffect(() => {
-    const total = cartItems.map((obj) => obj.price * obj.total_quantity).reduce((acc, curValue) => acc + curValue, 0);
-    setTotalCost(total);
-  }, [cartItems]);
-
-  useEffect(() => {
-    const foundObject = cartItems.find((obj) => obj._id === bookInfo._id);
-    setNewObj(foundObject);
+    findCurObj(bookInfo);
   }, [cartItems]);
 
   const handleDecrement = function () {
@@ -80,60 +70,6 @@ export default function Details({ bookInfo }) {
     // bookinfo is the current object that is being displayed on the browser
     addToCart(bookInfo);
   };
-
-  const handleIncrement2 = function (obj) {
-    const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
-
-    setCartItems((prevValue) => prevValue.map((item, i) => (i === index ? { ...item, total_quantity: +item.total_quantity + 1 } : item)));
-  };
-
-  const handleDecrement2 = function (obj) {
-    if (obj.total_quantity > 1) {
-      const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
-
-      setCartItems((prevValue) => prevValue.map((item, i) => (i === index ? { ...item, total_quantity: +item.total_quantity - 1 } : item)));
-    }
-  };
-
-  const removeItemFromCart = function (obj) {
-    const newArray = cartItems.filter((item) => item._id !== obj._id);
-    setCartItems(newArray);
-    alert('success', 'Item removed from cart');
-    localStorage.setItem('cartItems', JSON.stringify(newArray));
-  };
-
-  const cartDetails = cartItems?.map((obj, index) => {
-    return (
-      <div key={index} className="flex items-start px-8 py-6 gap-[2rem] border-b border-mainPGParagraphTxt">
-        <img src={obj.file} alt="book image" width={150} />
-
-        <div className="w-full">
-          <div className="flex items-center justify-between my-2">
-            <div>
-              <h2 className="text-headerBackground cardoFont font-bold capitalize">{obj.title}</h2>
-              <p className="text-mainPGParagraphTxt">${obj.price}</p>
-            </div>
-
-            <div className="border border-CTA text-center w-[80px] px-3 py-1 flex items-center justify-between">
-              <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={() => handleDecrement2(obj)}>
-                -
-              </div>
-
-              <p>{obj.total_quantity}</p>
-
-              <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={() => handleIncrement2(obj)}>
-                +
-              </div>
-            </div>
-          </div>
-
-          <button className="bg-headerBackground text-white font-bold cardoFont px-2 py-1 my-2" onClick={() => removeItemFromCart(obj)}>
-            Remove
-          </button>
-        </div>
-      </div>
-    );
-  });
 
   return (
     <>
@@ -216,26 +152,6 @@ export default function Details({ bookInfo }) {
           </div>
         </section>
       </section>
-
-      {/* modal window  for whenever the cart is clicked*/}
-      <div className={`modalWindow w-[480px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md bg-white ${cartIsOpened && 'visible'}`}>
-        <div className="bg-CTA w-full flex items-center justify-between px-4 py-3 rounded-t-lg">
-          <h2 className="text-headerBackground font-bold cardoFont text-xl">Your Cart</h2>
-          <p className="text-headerBackground cursor-pointer" onClick={closeCart}>
-            &#10006;
-          </p>
-        </div>
-        {cartDetails.length ? cartDetails : <p className="cardoFont text-lg text-mainPGParagraphTxt text-center p-6">There are no items in your cart at this time. You can start by adding items to you cart!</p>}
-
-        <div className={`w-full px-8 py-6 ${cartItems.length ? 'block' : 'hidden'}`}>
-          <div className="flex items-center justify-between my-2">
-            <p className="cardoFont text-headerBackground">Sub-Total</p>
-            <p className="text-headerBackground font-bold">${totalCost?.toFixed(2)} USD</p>
-          </div>
-
-          <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
-        </div>
-      </div>
     </>
   );
 }

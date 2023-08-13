@@ -33,6 +33,8 @@ export default function RootLayout({ children }) {
     category: '',
     total_quantity: 1,
   });
+  const [totalCost, setTotalCost] = useState(null);
+  const [newObj, setNewObj] = useState(null);
 
   useEffect(() => {
     // i.e if modalWindow is closed either by the button or the overlay was clicked it empty all inputs
@@ -182,7 +184,69 @@ export default function RootLayout({ children }) {
     }
   }, []);
 
-  useEffect(() => console.log(cartItems), [cartItems]);
+  useEffect(() => {
+    const total = cartItems.map((obj) => obj.price * obj.total_quantity).reduce((acc, curValue) => acc + curValue, 0);
+    setTotalCost(total);
+  }, [cartItems]);
+
+  const handleIncrement2 = function (obj) {
+    const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
+
+    setCartItems((prevValue) => prevValue.map((item, i) => (i === index ? { ...item, total_quantity: +item.total_quantity + 1 } : item)));
+  };
+
+  const handleDecrement2 = function (obj) {
+    if (obj.total_quantity > 1) {
+      const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
+
+      setCartItems((prevValue) => prevValue.map((item, i) => (i === index ? { ...item, total_quantity: +item.total_quantity - 1 } : item)));
+    }
+  };
+
+  const removeItemFromCart = function (obj) {
+    const newArray = cartItems.filter((item) => item._id !== obj._id);
+    setCartItems(newArray);
+    alert('success', 'Item removed from cart');
+    localStorage.setItem('cartItems', JSON.stringify(newArray));
+  };
+
+  const findCurObj = function (bookInfo) {
+    const foundObject = cartItems.find((obj) => obj._id === bookInfo._id);
+    setNewObj(foundObject);
+  };
+
+  const cartDetails = cartItems?.map((obj, index) => {
+    return (
+      <div key={index} className="flex items-start px-8 py-6 gap-[2rem] border-b border-mainPGParagraphTxt">
+        <img src={obj.file} alt="book image" width={150} />
+
+        <div className="w-full">
+          <div className="flex items-center justify-between my-2">
+            <div>
+              <h2 className="text-headerBackground cardoFont font-bold capitalize">{obj.title}</h2>
+              <p className="text-mainPGParagraphTxt">${obj.price}</p>
+            </div>
+
+            <div className="border border-CTA text-center w-[80px] px-3 py-1 flex items-center justify-between">
+              <div className="cursor-pointer text-headerBackground font-bold text-2xl" onClick={() => handleDecrement2(obj)}>
+                -
+              </div>
+
+              <p>{obj.total_quantity}</p>
+
+              <div className="cursor-pointer text-headerBackground font-bold text-xl" onClick={() => handleIncrement2(obj)}>
+                +
+              </div>
+            </div>
+          </div>
+
+          <button className="bg-headerBackground text-white font-bold cardoFont px-2 py-1 my-2" onClick={() => removeItemFromCart(obj)}>
+            Remove
+          </button>
+        </div>
+      </div>
+    );
+  });
 
   // function to render different content based on the route
   useEffect(() => {
@@ -246,6 +310,8 @@ export default function RootLayout({ children }) {
         cartItems,
         setCartItems,
         initialFormValue,
+        findCurObj,
+        newObj,
       }}
     >
       <header className={`bg-headerBackground w-full h-auto ${desktopHeaderHeight} relative px-8 pb-6 lg:pb-0 ${margin}`}>
@@ -263,6 +329,26 @@ export default function RootLayout({ children }) {
       <div className={`overlay absolute top-0 left-0 bottom-0 z-[1000] h-full w-full ${modalWindow && 'visible'}`} onClick={() => setModalWindow(false)}></div>
 
       <div className={`overlay2 absolute top-0 left-0 bottom-0 z-[1000] h-full w-full ${cartIsOpened && 'visible'}`} onClick={closeCart}></div>
+
+      {/* modal window */}
+      <div className={`modalWindow w-[480px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md bg-white ${cartIsOpened && 'visible'}`}>
+        <div className="bg-CTA w-full flex items-center justify-between px-4 py-3 rounded-t-lg">
+          <h2 className="text-headerBackground font-bold cardoFont text-xl">Your Cart</h2>
+          <p className="text-headerBackground cursor-pointer" onClick={closeCart}>
+            &#10006;
+          </p>
+        </div>
+        {cartDetails.length ? cartDetails : <p className="cardoFont text-lg text-mainPGParagraphTxt text-center p-6">There are no items in your cart at this time. You can start by adding items to you cart!</p>}
+
+        <div className={`w-full px-8 py-6 ${cartItems.length ? 'block' : 'hidden'}`}>
+          <div className="flex items-center justify-between my-2">
+            <p className="cardoFont text-headerBackground">Sub-Total</p>
+            <p className="text-headerBackground font-bold">${totalCost?.toFixed(2)} USD</p>
+          </div>
+
+          <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
+        </div>
+      </div>
     </modal.Provider>
   );
 }

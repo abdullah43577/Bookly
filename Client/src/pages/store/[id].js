@@ -73,8 +73,8 @@ export default function Details({ bookInfo }) {
 
   return (
     <>
-      <section className="w-full p-8 my-32">
-        <div className="container mx-auto flex items-start justify-between gap-[4rem]">
+      <section className="w-full p-8 mt-0 lg:my-32">
+        <div className="container mx-auto flex flex-col lg:flex-row lg:items-start justify-between gap-[4rem]">
           <div className="p-4 bg-[#F5F8FC]">
             <img className="mx-auto" width={800} src={bookInfo.file} alt="uploaded books images" />
           </div>
@@ -130,7 +130,7 @@ export default function Details({ bookInfo }) {
           </div>
         </div>
 
-        <section className="product-description container mx-auto flex items-center gap-[6rem] mt-32">
+        <section className="product-description container mx-auto flex flex-col lg:flex-row items-center gap-[6rem] mt-32">
           <div>
             <div className="cardoFont text-lg bg-headerBackground px-6 py-3 text-white font-bold max-w-[300px] ml-auto">PRODUCT DESCRIPTION</div>
             <div>

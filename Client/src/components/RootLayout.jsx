@@ -5,7 +5,7 @@ import HomeDYN from '@/components/Routes/HomeDYN';
 import AboutDYN from '@/components/Routes/AboutDYN';
 import PagesDYN from '@/components/Routes/PagesDYN';
 import ServicesDYN from '@/components/Routes/ServicesDYN';
-import ContactDYN from '@/components/Contact';
+import ContactDYN from '@/components/Routes/ContactDYN';
 import StoreDYN from './Routes/StoreDYN';
 import { createContext, useState, useEffect, useRef } from 'react';
 import { SERVER, alert } from './helper';
@@ -218,7 +218,7 @@ export default function RootLayout({ children }) {
   const cartDetails = cartItems?.map((obj, index) => {
     return (
       <div key={index} className="flex items-start px-8 py-6 gap-[2rem] border-b border-mainPGParagraphTxt">
-        <img src={obj.file} alt="book image" width={150} />
+        <img src={obj.file} alt="book image" className="w-[80px] md:w-[150px]" />
 
         <div className="w-full">
           <div className="flex items-center justify-between my-2">
@@ -331,7 +331,7 @@ export default function RootLayout({ children }) {
       <div className={`overlay2 absolute top-0 left-0 bottom-0 z-[1000] h-full w-full ${cartIsOpened && 'visible'}`} onClick={closeCart}></div>
 
       {/* modal window */}
-      <div className={`modalWindow w-[480px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md bg-white ${cartIsOpened && 'visible'}`}>
+      <div className={`modalWindow w-[300px] sm:w-[480px] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md bg-white ${cartIsOpened && 'visible'}`}>
         <div className="bg-CTA w-full flex items-center justify-between px-4 py-3 rounded-t-lg">
           <h2 className="text-headerBackground font-bold cardoFont text-xl">Your Cart</h2>
           <p className="text-headerBackground cursor-pointer" onClick={closeCart}>

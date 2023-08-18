@@ -15,7 +15,7 @@ export default function store() {
         </div>
       </section>
 
-      <section className={`modal w-[300px] sm:w-[350px] md:w-[700px] bg-[#F3F3F3] mx-auto p-8 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md ${modalWindow && 'visible'}`}>
+      <section className={`modal w-[300px] sm:w-[350px] md:w-[700px] bg-[#F3F3F3] mx-auto px-4 py-3 md:p-8 fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[9999] rounded-md ${modalWindow && 'visible'}`}>
         <form onSubmit={handleSubmit}>
           <input type="file" className="mb-4" id="file" name="file" onChange={handleFileChange} required accept="image/*" ref={fileInput} />
 

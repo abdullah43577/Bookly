@@ -208,3 +208,18 @@ input {
     grid-template-columns: 1fr;
   }
 }
+
+.faq {
+  transition:
+    transform 1000ms ease,
+    opacity 1000ms ease,
+    max-height 1000ms ease;
+  max-height: 0;
+  opacity: 0;
+}
+
+.faqActive {
+  transform: translateY(0%) !important;
+  opacity: 1 !important;
+  max-height: 1000px;
+}

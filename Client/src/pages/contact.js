@@ -5,21 +5,52 @@ import userIcon from '../../public/images/user.png';
 import mailIcon from '../../public/images/mail.png';
 import phoneIcon from '../../public/images/phone2.png';
 import editIcon from '../../public/images/edit.png';
+import bullet from '../../public/images/Point.png';
+import ellipse from '../../public/images/Ellipse.png';
+import { useState } from 'react';
 
 export default function Contact() {
+  const [faqState, setFaqState] = useState({
+    faq1: false,
+    faq2: false,
+    faq3: false,
+    faq4: false,
+    faq5: false,
+    faq6: false,
+    faq7: false,
+    faq8: false,
+    faq9: false,
+    faq10: false,
+  });
+
+  const handleFaqToggle = function (key) {
+    // updating the currentState of the FAQ
+    setFaqState((prevValue) => {
+      const newState = {};
+
+      Object.keys(prevValue).forEach((faqKey) => {
+        newState[faqKey] = false;
+      });
+
+      newState[key] = !prevValue[key];
+
+      return newState;
+    });
+  };
+
   return (
     <>
       <Head>
         <title>Bookly | Contact</title>
       </Head>
-      <section className="contact container mx-auto px-8 my-32 flex items-start justify-between">
-        <article>
-          <div>
+      <section className="contact container mx-auto px-8 my-16 lg:my-32 flex flex-col lg:flex-row items-start justify-between">
+        <article className="mb-10 lg:mb-0">
+          <div className="text-center lg:text-left">
             <h2 className="text-3xl cardoFont font-bold text-headerBackground mb-3">Keep in Touch</h2>
             <Image src={Line} alt="border" />
           </div>
 
-          <p className="text-mainPGParagraphTxt my-3">
+          <p className="text-mainPGParagraphTxt my-3 text-center lg:text-left">
             There are many variations of passages of lorem ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
           </p>
 
@@ -92,14 +123,14 @@ export default function Contact() {
           </div>
         </article>
 
-        <form className="flex flex-col">
+        <form className="flex flex-col p-0 lg:p-4">
           <div className="flex items-center gap-4">
-            <div className="relative w-[250px] border border-gray-300">
+            <div className="relative w-auto md:w-[250px] border border-gray-300">
               <Image src={userIcon} alt="user icon" className="absolute left-2 bottom-2" />
               <input type="text" placeholder="Name" className="w-full px-10 py-2 outline-none" />
             </div>
 
-            <div className="relative w-[250px] border border-gray-300">
+            <div className="relative w-auto md:w-[250px] border border-gray-300">
               <Image src={mailIcon} alt="mail icon" className="absolute left-2 bottom-2" />
               <input type="text" placeholder="Email" className="w-full px-10 py-2 outline-none" />
             </div>
@@ -124,6 +155,143 @@ export default function Contact() {
 
           <button className="bg-CTA text-headerBackground font-bold py-3">Send Message</button>
         </form>
+      </section>
+
+      <section className="faq-container w-full bg-background py-6">
+        <div className="container mx-auto flex flex-col items-center">
+          <div className="mb-16 flex items-center flex-col justify-center">
+            <h2 className="text-3xl text-headerBackground text-center cardoFont font-bold mb-2">Frequent Questions?</h2>
+            <Image src={Line} alt="line" />
+          </div>
+
+          <div className="flex flex-col lg:flex-row px-4 lg:px-0 items-start lg:gap-[8rem]">
+            <div className="faqBox">
+              <div className="overflow-hidden border-b border-mainPGParagraphTxt pb-4">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq1')}>
+                  <Image src={faqState.faq1 ? ellipse : bullet} alt="bullet" width={10} />
+
+                  <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq1 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+
+              <div className="border-b border-mainPGParagraphTxt pb-4 my-8 overflow-hidden">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq2')}>
+                  <Image src={faqState.faq2 ? ellipse : bullet} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Is Hack Productivity book available on the one stores?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq2 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+
+              <div className="border-b border-mainPGParagraphTxt pb-4 my-8 overflow-hidden">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq3')}>
+                  <Image src={faqState.faq3 ? ellipse : bullet} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">What is Hack Productivity book about?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq3 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+
+              <div className="border-b border-mainPGParagraphTxt pb-4 my-8 overflow-hidden">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq4')}>
+                  <Image src={faqState.faq4 ? ellipse : bullet} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Where can I get Hack Productivity book?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq4 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+
+              <div className="border-b border-mainPGParagraphTxt pb-4 my-8 overflow-hidden">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq5')}>
+                  <Image src={faqState.faq5 ? ellipse : bullet} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq5 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+            </div>
+
+            <div className="faqBox">
+              <div className="overflow-hidden border-b border-mainPGParagraphTxt pb-4">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq6')}>
+                  <Image src={faqState.faq6 ? ellipse : bullet} alt="bullet" width={10} />
+
+                  <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq6 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+
+              <div className="overflow-hidden my-8 border-b border-mainPGParagraphTxt pb-4">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq7')}>
+                  <Image src={faqState.faq7 ? ellipse : bullet} alt="bullet" width={10} />
+
+                  <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq7 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+
+              <div className="overflow-hidden my-8 border-b border-mainPGParagraphTxt pb-4">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq8')}>
+                  <Image src={faqState.faq8 ? ellipse : bullet} alt="bullet" width={10} />
+
+                  <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq8 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+
+              <div className="overflow-hidden my-8 border-b border-mainPGParagraphTxt pb-4">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq9')}>
+                  <Image src={faqState.faq9 ? ellipse : bullet} alt="bullet" width={10} />
+
+                  <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq9 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+
+              <div className="overflow-hidden my-8 border-b border-mainPGParagraphTxt pb-4">
+                <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq10')}>
+                  <Image src={faqState.faq10 ? ellipse : bullet} alt="bullet" width={10} />
+
+                  <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
+                </div>
+
+                <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq10 ? 'faqActive' : '-translate-y-[100%]'}`}>
+                  Many desktop publishing packages and web page editors to now use Lorem ipsum as their default model text, and angle uncover many web sites still in their infancy. <br /> <br />
+                  There are many variations of lorem ipsum available
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </>
   );

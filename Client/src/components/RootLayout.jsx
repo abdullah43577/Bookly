@@ -249,7 +249,7 @@ export default function RootLayout({ children }) {
     );
   });
 
-  // function to render different content based on the route
+  // render different content based on the route
   useEffect(() => {
     switch (router.pathname) {
       case '/pages':

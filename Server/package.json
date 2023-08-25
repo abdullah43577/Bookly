@@ -4,7 +4,7 @@
   "description": "Backend server package files",
   "main": "app.js",
   "engines": {
-    "node": "14.17.6"
+    "node": "18.x"
   },
   "scripts": {
     "dev": "node server"

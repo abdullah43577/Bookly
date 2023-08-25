@@ -9,6 +9,7 @@ import ContactDYN from '@/components/Routes/ContactDYN';
 import StoreDYN from './Routes/StoreDYN';
 import { createContext, useState, useEffect, useRef } from 'react';
 import { SERVER, alert } from './helper';
+import Link from 'next/link';
 
 export const modal = createContext();
 
@@ -346,7 +347,9 @@ export default function RootLayout({ children }) {
             <p className="text-headerBackground font-bold">${totalCost?.toFixed(2)} USD</p>
           </div>
 
-          <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
+          <Link href="/store/checkout">
+            <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
+          </Link>
         </div>
       </div>
     </modal.Provider>

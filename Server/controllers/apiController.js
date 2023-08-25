@@ -1,5 +1,6 @@
 const Store = require('../models/store');
 const { cloudinary } = require('../utils/cloudinary');
+// const got = require('got').default;
 
 const api_index = (req, res) => {
   res.status(200).json({ message: 'Hello World!' });
@@ -63,10 +64,51 @@ const api_delete_all_stores = async (req, res) => {
   }
 };
 
+// test code
+
+// const api_checkout = async (req, res) => {
+//   try {
+//     const response = await got
+//       .post('https://api.flutterwave.com/v3/payments', {
+//         headers: {
+//           Authorization: `Bearer ${process.env.FLW_SECRET_KEY}`,
+//         },
+//         json: {
+//           tx_ref: 'hooli-tx-1920bbtytty',
+//           amount: req.json.amount,
+//           currency: 'NGN',
+//           redirect_url: 'https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc',
+//           meta: {
+//             consumer_id: 23,
+//             consumer_mac: '92a3-912ba-1192a',
+//           },
+//           customer: {
+//             email: req.customer.email,
+//             phonenumber: req.customer.phone,
+//             name: req.customer.name,
+//             address: req.customer.address,
+//           },
+//           customizations: {
+//             title: 'Pied Piper Payments',
+//             logo: 'http://www.piedpiper.com/app/themes/joystick-v27/images/logo.png',
+//           },
+//         },
+//       })
+//       .json();
+
+//     const paymentLink = response.data.link;
+//     res.status(200).send({ message: paymentLink });
+//   } catch (err) {
+//     console.log(err.code);
+//     console.log(err.response.body);
+//   }
+// };
+
 module.exports = {
   api_index,
   api_upload,
   api_get_all_books,
   api_id,
   api_delete_all_stores,
+  // api_checkout,
 };

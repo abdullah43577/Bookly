@@ -211,9 +211,9 @@ input {
 
 .faq {
   transition:
-    transform 1000ms ease,
-    opacity 1000ms ease,
-    max-height 1000ms ease;
+    transform 1000ms ease-in-out,
+    opacity 1000ms ease-in-out,
+    max-height 1000ms ease-in-out;
   max-height: 0;
   opacity: 0;
 }

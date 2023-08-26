@@ -223,3 +223,18 @@ input {
   opacity: 1 !important;
   max-height: 1000px;
 }
+
+form div label::after {
+  content: '*';
+  color: #1b3764;
+}
+
+.checkout_section {
+  background-image: url('../../public/images/background_checkout.png');
+  background-size: cover;
+  /* background-position: center; */
+}
+
+.checkout_form {
+  padding: 0 !important;
+}

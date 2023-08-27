@@ -1,6 +1,8 @@
 import { useState, useContext, useEffect } from 'react';
 import { alert } from '@/components/helper';
 import { modal } from '@/components/RootLayout';
+import { nanoid } from 'nanoid';
+import { SERVER } from '@/components/helper';
 
 export default function Checkout() {
   const { totalCost } = useContext(modal);
@@ -15,8 +17,10 @@ export default function Checkout() {
   });
 
   useEffect(() => {
-    setCheckoutData((prevValue) => ({ ...prevValue, amount: `$${totalCost?.toFixed(2) || 0}` }));
+    setCheckoutData((prevValue) => ({ ...prevValue, amount: `$ ${totalCost?.toFixed(2) || 0}` }));
   }, [totalCost]);
+
+  useEffect(() => console.log(checkoutData), [checkoutData]);
 
   const handleInputChange = function (e) {
     const { name, value } = e.target;
@@ -33,7 +37,18 @@ export default function Checkout() {
       return;
     }
 
+    const id = nanoid();
+
     const checkoutObject = {
+      tx_ref: id,
+      amount: `${checkoutData.amount}`,
+      redirect_url: 'https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc',
+
+      meta: {
+        consumer_id: id,
+        consumer_mac: id,
+      },
+
       customer: {
         name: `${checkoutData.firstName} ${checkoutData.lastName}`,
         email: `${checkoutData.email}`,
@@ -41,11 +56,9 @@ export default function Checkout() {
         phone: `${checkoutData.phoneNo}`,
         address: `${checkoutData.address}`,
       },
-
-      json: {
-        amount: `${checkoutData.amount}`,
-      },
     };
+
+    console.log(checkoutObject);
 
     try {
       const res = await fetch(`${SERVER}/checkout`, {
@@ -58,37 +71,36 @@ export default function Checkout() {
 
       const data = await res.json();
 
-      if (res.status !== 200) throw new Error(data.message);
-      console.log(data);
+      if (res.status !== 200) throw new Error(data.error);
 
-      window.location.href = data.paymentLink;
+      window.open(data.message, '_blank', 'toolbar=0,location=0,menubar=0');
 
       alert('success', 'Payment Made Successfully!');
     } catch (err) {
-      console.log(err);
+      console.error(err);
       alert('error', 'Error Making Payment');
     }
   };
 
   return (
     <section className="checkout_section flex items-center justify-center w-full">
-      <form onSubmit={handleSubmitCheckout} className="checkout_form w-[600px] container mx-auto my-32 flex flex-col">
-        <h2 className="cardoFont font-bold text-headerBackground text-4xl text-center">Billing Information</h2>
+      <form onSubmit={handleSubmitCheckout} className="checkout_form w-[300px] md:w-[600px] container mx-auto my-16 md:my-32 flex flex-col">
+        <h2 className="cardoFont font-bold text-headerBackground text-2xl md:text-4xl text-center">Billing Information</h2>
 
         <div className="w-full">
-          <div className="flex items-center justify-between">
-            <div>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div className="mt-4 md:mt-0">
               <label htmlFor="firstName" className="block mb-2">
                 First Name:
               </label>
-              <input type="text" placeholder="First Name" value={checkoutData.firstName} onChange={handleInputChange} className="px-4 py-2 outline-none rounded-md" required name="firstName" />
+              <input type="text" placeholder="First Name" value={checkoutData.firstName} onChange={handleInputChange} className="px-4 py-2 outline-none rounded-md w-full md:w-auto" required name="firstName" />
             </div>
 
-            <div>
+            <div className="mt-4 md:mt-0">
               <label htmlFor="lastName" className="block mb-2">
                 Last Name:
               </label>
-              <input type="text" placeholder="Last Name" value={checkoutData.lastName} onChange={handleInputChange} className="px-4 py-2 outline-none rounded-md" required name="lastName" />
+              <input type="text" placeholder="Last Name" value={checkoutData.lastName} onChange={handleInputChange} className="px-4 py-2 outline-none rounded-md w-full md:w-auto" required name="lastName" />
             </div>
           </div>
 

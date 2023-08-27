@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Store = require('../models/store');
 const { cloudinary } = require('../utils/cloudinary');
 const axios = require('axios');
@@ -66,39 +67,80 @@ const api_delete_all_stores = async (req, res) => {
 
 // test code
 
+// const api_checkout = async (req, res) => {
+//   try {
+//     const response = await axios
+//       .post('https://api.flutterwave.com/v3/payments', {
+//         headers: {
+//           Authorization: `Bearer ${process.env.FLW_SECRET_KEY}`,
+//         },
+//         json: {
+//           tx_ref: req.body.tx_ref,
+//           amount: req.body.amount,
+//           currency: 'NGN',
+//           redirect_url: req.body.redirect_url,
+//           meta: {
+//             consumer_id: req.body.meta.consumer_id,
+//             consumer_mac: req.body.meta.consumer_mac,
+//           },
+//           customer: {
+//             email: req.body.customer.email,
+//             phonenumber: req.body.customer.phone,
+//             name: req.body.customer.name,
+//             address: req.body.customer.address,
+//           },
+//           customizations: {
+//             title: 'Pied Piper Payments',
+//             logo: 'http://www.piedpiper.com/app/themes/joystick-v27/images/logo.png',
+//           },
+//         },
+//       })
+//       .json();
+
+//     const paymentLink = response.data.link;
+//     res.status(200).send({ message: paymentLink });
+//   } catch (err) {
+//     res.status(500).send({ error: 'Error making payment' });
+//     console.log(err.code);
+//     console.log(err.response.body);
+//   }
+// };
+
 const api_checkout = async (req, res) => {
   try {
-    const response = await axios
-      .post('https://api.flutterwave.com/v3/payments', {
+    const response = await axios.post(
+      'https://api.flutterwave.com/v3/payments',
+      {
+        tx_ref: req.body.tx_ref,
+        amount: req.body.amount,
+        currency: 'NGN',
+        redirect_url: req.body.redirect_url,
+        meta: {
+          consumer_id: req.body.meta.consumer_id,
+          consumer_mac: req.body.meta.consumer_mac,
+        },
+        customer: {
+          email: req.body.customer.email,
+          phonenumber: req.body.customer.phone,
+          name: req.body.customer.name,
+          address: req.body.customer.address,
+        },
+        customizations: {
+          title: 'Pied Piper Payments',
+          logo: 'http://www.piedpiper.com/app/themes/joystick-v27/images/logo.png',
+        },
+      },
+      {
         headers: {
           Authorization: `Bearer ${process.env.FLW_SECRET_KEY}`,
         },
-        json: {
-          tx_ref: 'hooli-tx-1920bbtytty',
-          amount: req.json.amount,
-          currency: 'NGN',
-          redirect_url: 'https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc',
-          meta: {
-            consumer_id: 23,
-            consumer_mac: '92a3-912ba-1192a',
-          },
-          customer: {
-            email: req.customer.email,
-            phonenumber: req.customer.phone,
-            name: req.customer.name,
-            address: req.customer.address,
-          },
-          customizations: {
-            title: 'Pied Piper Payments',
-            logo: 'http://www.piedpiper.com/app/themes/joystick-v27/images/logo.png',
-          },
-        },
-      })
-      .json();
+      }
+    );
 
-    const paymentLink = response.data.link;
-    res.status(200).send({ message: paymentLink });
+    const { link } = response.data.data;
+    res.status(200).send({ message: link });
   } catch (err) {
+    res.status(500).send({ error: 'Error making payment' });
     console.log(err.code);
     console.log(err.response.body);
   }

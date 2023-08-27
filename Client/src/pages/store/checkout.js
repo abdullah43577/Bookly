@@ -1,15 +1,22 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { alert } from '@/components/helper';
+import { modal } from '@/components/RootLayout';
 
 export default function Checkout() {
+  const { totalCost } = useContext(modal);
+
   const [checkoutData, setCheckoutData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phoneNo: '',
     address: '',
-    amount: '$100',
+    amount: '',
   });
+
+  useEffect(() => {
+    setCheckoutData((prevValue) => ({ ...prevValue, amount: `$${totalCost?.toFixed(2) || 0}` }));
+  }, [totalCost]);
 
   const handleInputChange = function (e) {
     const { name, value } = e.target;

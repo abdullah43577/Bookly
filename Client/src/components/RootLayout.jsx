@@ -36,6 +36,12 @@ export default function RootLayout({ children }) {
   });
   const [totalCost, setTotalCost] = useState(null);
   const [newObj, setNewObj] = useState(null);
+  const [navbar, setNavbar] = useState(false);
+
+  // handle navbar toggle
+  const handleNavBar = function () {
+    setNavbar((prevValue) => !prevValue);
+  };
 
   useEffect(() => {
     // i.e if modalWindow is closed either by the button or the overlay was clicked it empty all inputs
@@ -140,6 +146,7 @@ export default function RootLayout({ children }) {
   // code for cart section
   const handleCartClick = function () {
     setCartIsOpened((prevValue) => !prevValue);
+    setNavbar(false);
   };
 
   const closeCart = function () {
@@ -188,7 +195,7 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     const total = cartItems.map((obj) => obj.price * obj.total_quantity).reduce((acc, curValue) => acc + curValue, 0);
     setTotalCost(total);
-  }, [cartItems]);
+  }, [cartItems, cartIsOpened]);
 
   const handleIncrement2 = function (obj) {
     const index = cartItems.findIndex((item) => item._id === obj._id); // returns the index of the object in the array
@@ -256,24 +263,28 @@ export default function RootLayout({ children }) {
         setCurrentRoute(<PagesDYN />);
         setDesktopHeaderHeight('lg:h-[50vh]');
         setMargin('');
+        setNavbar(false);
         break;
 
       case '/about':
         setCurrentRoute(<AboutDYN />);
         setDesktopHeaderHeight('lg:h-[50vh]');
         setMargin('');
+        setNavbar(false);
         break;
 
       case '/services':
         setCurrentRoute(<ServicesDYN />);
         setDesktopHeaderHeight('lg:h-[50vh]');
         setMargin('');
+        setNavbar(false);
         break;
 
       case '/contact':
         setCurrentRoute(<ContactDYN />);
         setDesktopHeaderHeight('lg:h-[50vh]');
         setMargin('');
+        setNavbar(false);
         break;
 
       default:
@@ -281,10 +292,12 @@ export default function RootLayout({ children }) {
           setCurrentRoute(<StoreDYN />);
           setDesktopHeaderHeight('lg:h-[50vh]');
           setMargin('');
+          setNavbar(false);
         } else {
           setCurrentRoute(<HomeDYN />);
           setDesktopHeaderHeight('lg:h-screen');
           setMargin('mb-32');
+          setNavbar(false);
         }
         break;
     }
@@ -313,6 +326,10 @@ export default function RootLayout({ children }) {
         initialFormValue,
         findCurObj,
         newObj,
+        totalCost,
+        navbar,
+        handleNavBar,
+        setNavbar,
       }}
     >
       <header className={`bg-headerBackground w-full h-auto ${desktopHeaderHeight} relative px-8 pb-6 lg:pb-0 ${margin}`}>
@@ -347,7 +364,7 @@ export default function RootLayout({ children }) {
             <p className="text-headerBackground font-bold">${totalCost?.toFixed(2)} USD</p>
           </div>
 
-          <Link href="/store/checkout">
+          <Link href="/store/checkout" onClick={handleCartClick}>
             <button className="text-headerBackground font-bold w-full bg-CTA py-2 my-2">Continue to Checkout</button>
           </Link>
         </div>

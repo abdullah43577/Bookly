@@ -17,7 +17,7 @@ export default function Checkout() {
   });
 
   useEffect(() => {
-    setCheckoutData((prevValue) => ({ ...prevValue, amount: `$ ${totalCost?.toFixed(2) || 0}` }));
+    setCheckoutData((prevValue) => ({ ...prevValue, amount: `${totalCost?.toFixed(2) || 0}` }));
   }, [totalCost]);
 
   useEffect(() => console.log(checkoutData), [checkoutData]);
@@ -41,7 +41,7 @@ export default function Checkout() {
 
     const checkoutObject = {
       tx_ref: id,
-      amount: `${checkoutData.amount}`,
+      amount: checkoutData.amount,
       redirect_url: 'https://webhook.site/9d0b00ba-9a69-44fa-a43d-a82c33c36fdc',
 
       meta: {
@@ -54,7 +54,6 @@ export default function Checkout() {
         email: `${checkoutData.email}`,
         items: '',
         phone: `${checkoutData.phoneNo}`,
-        address: `${checkoutData.address}`,
       },
     };
 
@@ -72,10 +71,9 @@ export default function Checkout() {
       const data = await res.json();
 
       if (res.status !== 200) throw new Error(data.error);
+      console.log(data.message);
 
       window.open(data.message, '_blank', 'toolbar=0,location=0,menubar=0');
-
-      alert('success', 'Payment Made Successfully!');
     } catch (err) {
       console.error(err);
       alert('error', 'Error Making Payment');
@@ -129,7 +127,7 @@ export default function Checkout() {
             <label htmlFor="Amount" className="block mb-2">
               Amount To Be Paid:
             </label>
-            <input type="text" placeholder="Amount" value={checkoutData.amount} onChange={handleInputChange} className="px-4 py-2 outline-none rounded-md w-full" required disabled />
+            <input type="text" placeholder="Amount" value={`₦ ${checkoutData.amount}`} onChange={handleInputChange} className="px-4 py-2 outline-none rounded-md w-full" required disabled />
           </div>
         </div>
 

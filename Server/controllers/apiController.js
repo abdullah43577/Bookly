@@ -66,8 +66,6 @@ const api_delete_all_stores = async (req, res) => {
 };
 
 const api_checkout = async (req, res) => {
-  console.log(req.body);
-
   try {
     const response = await axios.post(
       'https://api.flutterwave.com/v3/payments',
@@ -92,7 +90,7 @@ const api_checkout = async (req, res) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${process.env.FLW_LIVE_SECRET_KEY}`,
+          Authorization: `Bearer ${process.env.FLW_TEST_SECRET_KEY}`,
         },
       }
     );

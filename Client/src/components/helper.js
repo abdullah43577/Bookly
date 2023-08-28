@@ -19,5 +19,5 @@ export const alert = function (status, message) {
   });
 };
 
-export const SERVER = 'http://localhost:8080/api';
-// export const SERVER = 'https://bookly-api.onrender.com/api';
+// export const SERVER = 'http://localhost:8080/api';
+export const SERVER = 'https://bookly-api.onrender.com/api';

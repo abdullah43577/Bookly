@@ -2,14 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/about": "pages/about.html",
-  "/contact": "pages/contact.html",
-  "/api/hello": "pages/api/hello.js",
-  "/": "pages/index.html",
-  "/services": "pages/services.html",
-  "/store/checkout": "pages/store/checkout.html",
-  "/store/checkout/success": "pages/store/checkout/success.html",
-  "/store": "pages/store.html",
+  "/": "pages/index.js",
+  "/store": "pages/store.js",
   "/store/[id]": "pages/store/[id].js",
-  "/404": "pages/404.html"
+  "/store/checkout": "pages/store/checkout.js"
 }

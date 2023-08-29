@@ -47,7 +47,7 @@ export default function Checkout() {
     const checkoutObject = {
       tx_ref: id,
       amount: checkoutData.amount,
-      redirect_url: 'http://localhost:3000/store/checkout/success',
+      redirect_url: 'https://bookly-app-nu.vercel.app/store/checkout/success',
 
       meta: {
         consumer_id: id,

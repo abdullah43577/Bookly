@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import bullet from '../../public/images/Point.png';
 import Link from 'next/link';
 
 export default function AuthorBooks({ uploadedBooks }) {
@@ -16,7 +14,7 @@ export default function AuthorBooks({ uploadedBooks }) {
           </div>
           <p className="text-mainPGParagraphTexts my-3 text-center lg:text-left">{uploadedBooks.description}</p>
           <div className="flex items-center gap-2 my-3">
-            <Image src={bullet} alt="bullet" />
+            <img src="/Point.png" alt="bullet" />
             <p className="cardoFont font-bold text-lg lg:text-xl capitalize text-headerBackground">{uploadedBooks.category}</p>
           </div>
           <Link href={`/store/${uploadedBooks._id}`}>

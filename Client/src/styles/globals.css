@@ -230,7 +230,7 @@ form div label::after {
 }
 
 .checkout_section {
-  background-image: url('../../public/images/background_checkout.png');
+  background-image: url('../../public/background_checkout.png');
   background-size: cover;
   /* background-position: center; */
 }

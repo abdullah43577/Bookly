@@ -1,7 +1,5 @@
 import { SERVER } from '@/components/helper';
-import cart from '../../../public/images/Vector2.png';
-import Image from 'next/image';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { modal } from '@/components/RootLayout';
 
 export const getStaticPaths = async function () {
@@ -124,7 +122,7 @@ export default function Details({ bookInfo }) {
               </div>
 
               <button className="cardoFont bg-CTA px-6 py-3 text-headerBackground font-bold" onClick={handleAddToCart}>
-                <Image src={cart} alt="cart icon" className="inline" /> Add to cart
+                <img src="/Vector2.png" alt="cart icon" className="inline" /> Add to cart
               </button>
             </div>
           </div>

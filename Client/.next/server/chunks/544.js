@@ -2,29 +2,7 @@ exports.id = 544;
 exports.ids = [544];
 exports.modules = {
 
-/***/ 4431:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/Line.e5fc21e7.png","height":2,"width":34,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAABCAMAAADU3h9xAAAAA1BMVEX/x0Gcgjm4AAAAAXRSTlOArV5bRgAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAtJREFUeJxjYIACAAAJAAH7UripAAAAAElFTkSuQmCC","blurWidth":8,"blurHeight":1});
-
-/***/ }),
-
-/***/ 8158:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/Point.92822f6e.png","height":17,"width":16,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAHlBMVEX/ykL/vGH/yUD/ykH/zUL/yEH/ykH/xkD/zkP/20iOSD5hAAAACHRSTlP+AZRw25Y6Oxg9JnAAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAxSURBVHicPYtBCgAgDMPSuWn9/4dlCOuhhJKisO0Q6wLcRbrB2f0zyziqfpWQdtSRHhw4AMvUkLO+AAAAAElFTkSuQmCC","blurWidth":8,"blurHeight":8});
-
-/***/ }),
-
-/***/ 5712:
+/***/ 1905:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -39,19 +17,9 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime = __webpack_require__(5893);
 // EXTERNAL MODULE: external "next/router"
 var router_ = __webpack_require__(1853);
-// EXTERNAL MODULE: ./node_modules/next/image.js
-var next_image = __webpack_require__(5675);
-var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
-;// CONCATENATED MODULE: ./public/images/book.png
-/* harmony default export */ const book = ({"src":"/_next/static/media/book.798e2e67.png","height":29,"width":26,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAICAMAAAAC2hU0AAAAHlBMVEX/yUH/vDL/yED/y0L/yEL/ykH/zUL/yUH/yEL/zkQDb6iWAAAACnRSTlN+Am+rUEOUYz0lszMFWwAAAAlwSFlzAAALEwAACxMBAJqcGAAAACxJREFUeJwlxUESACAIA7GFWtD/f9hBcwkIQVEZRAB5/pLeMaC2bRdaw3SOvg6IAJEf1RvOAAAAAElFTkSuQmCC","blurWidth":7,"blurHeight":8});
-;// CONCATENATED MODULE: ./public/images/icon.png
-/* harmony default export */ const icon = ({"src":"/_next/static/media/icon.5113aa75.png","height":7,"width":24,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAACCAMAAABSSm3fAAAACVBMVEX/yUH/yUFMaXGEbTyEAAAAA3RSTlN6jQAtPc9eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAF0lEQVR4nGNgZGBiYGBiYGRgZGACsRkBAIMADhrSNWcAAAAASUVORK5CYII=","blurWidth":8,"blurHeight":2});
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
 ;// CONCATENATED MODULE: ./src/components/Footer.jsx
-
-
-
 
 
 function Footer() {
@@ -67,8 +35,8 @@ function Footer() {
                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
                                 className: "flex items-center",
                                 children: [
-                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                        src: book,
+                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                        src: "/book.png",
                                         alt: "logo"
                                     }),
                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -111,8 +79,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -125,8 +93,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -139,8 +107,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -153,8 +121,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -167,8 +135,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -181,8 +149,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -207,8 +175,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -221,8 +189,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -235,8 +203,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -249,8 +217,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -263,8 +231,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -277,8 +245,8 @@ function Footer() {
                                             /*#__PURE__*/ (0,jsx_runtime.jsxs)("li", {
                                                 className: "flex items-center gap-2 py-1",
                                                 children: [
-                                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                        src: icon,
+                                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                        src: "/icon.png",
                                                         alt: "bullet point"
                                                     }),
                                                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -379,12 +347,7 @@ function Footer() {
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
 var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
-;// CONCATENATED MODULE: ./public/images/Vector.png
-/* harmony default export */ const Vector = ({"src":"/_next/static/media/Vector.bfd71859.png","height":24,"width":24,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAJ1BMVEVMaXH////////////////////////////////////////////////c+C/6AAAADXRSTlMAig+WojECQCAFaM5R2snPYQAAAAlwSFlzAAALEwAACxMBAJqcGAAAADVJREFUeJwdwYcNwDAMwDB5r/x/b4GSmCu/ke2IaHgnInIQwqAO6pqUkaybeZHU014lMWOuPiIqAQsITEgsAAAAAElFTkSuQmCC","blurWidth":8,"blurHeight":8});
 ;// CONCATENATED MODULE: ./src/components/Navbar.jsx
-
-
-
 
 
 
@@ -408,8 +371,8 @@ function Navbar() {
             /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
                 className: "logo flex items-center justify-center z-20",
                 children: [
-                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                        src: book,
+                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                        src: "/book.png",
                         alt: "logo icon"
                     }),
                     /*#__PURE__*/ jsx_runtime.jsx("label", {
@@ -473,8 +436,8 @@ function Navbar() {
                         className: "relative",
                         onClick: handleCartClick,
                         children: [
-                            /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                src: Vector,
+                            /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                src: "/Vector.png",
                                 alt: "cart icon",
                                 height: 21,
                                 width: 22,
@@ -515,19 +478,10 @@ function Navbar() {
     });
 }
 
-;// CONCATENATED MODULE: ./public/images/hero book.png
-/* harmony default export */ const hero_book = ({"src":"/_next/static/media/hero book.7b9a1171.png","height":800,"width":592,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAICAMAAADtGH4KAAAALVBMVEX09/zy9Pjo7PTk5+z7/P7x8vDFyc3S1NP45bOxsamcpKzX3erzxE3w582zwd3IXputAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAMUlEQVR4nBXFyRGAMBAEsZ69Ddj5h+tCH6HqKhG9VgMoEyLPfIneZ48wdw/ATX8yQxcZbQDGVN5vngAAAABJRU5ErkJggg==","blurWidth":6,"blurHeight":8});
-// EXTERNAL MODULE: ./public/images/Line.png
-var Line = __webpack_require__(4431);
-;// CONCATENATED MODULE: ./public/images/white line.png
-/* harmony default export */ const white_line = ({"src":"/_next/static/media/white line.e2d1ac02.png","height":2,"width":157,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAABCAMAAADU3h9xAAAAA1BMVEX///+nxBvIAAAAAXRSTlOArV5bRgAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAtJREFUeJxjYIACAAAJAAH7UripAAAAAElFTkSuQmCC","blurWidth":8,"blurHeight":1});
-// EXTERNAL MODULE: ./public/images/Point.png
-var Point = __webpack_require__(8158);
+// EXTERNAL MODULE: ./node_modules/next/image.js
+var next_image = __webpack_require__(5675);
+var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
 ;// CONCATENATED MODULE: ./src/components/Routes/HomeDYN.jsx
-
-
-
-
 
 
 
@@ -540,8 +494,8 @@ function HomeDYN() {
                     /*#__PURE__*/ (0,jsx_runtime.jsxs)("small", {
                         className: "text-background flex items-center gap-2 text-lg",
                         children: [
-                            /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                src: Line/* default */.Z,
+                            /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                src: "/Line.png",
                                 alt: "line"
                             }),
                             /*#__PURE__*/ jsx_runtime.jsx("i", {
@@ -572,8 +526,8 @@ function HomeDYN() {
                                     /*#__PURE__*/ jsx_runtime.jsx("span", {
                                         children: "Read Free Demo"
                                     }),
-                                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                        src: white_line,
+                                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                        src: "/white line.png",
                                         alt: "white border",
                                         width: 125
                                     })
@@ -590,8 +544,8 @@ function HomeDYN() {
                                     /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
                                         className: "flex items-center gap-2",
                                         children: [
-                                            /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                src: Point/* default */.Z,
+                                            /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                src: "/Point.png",
                                                 alt: "bullet point",
                                                 width: 10
                                             }),
@@ -614,8 +568,8 @@ function HomeDYN() {
                                     /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
                                         className: "flex items-center gap-2",
                                         children: [
-                                            /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                src: Point/* default */.Z,
+                                            /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                src: "/Point.png",
                                                 alt: "bullet point",
                                                 width: 10
                                             }),
@@ -638,8 +592,8 @@ function HomeDYN() {
                                     /*#__PURE__*/ (0,jsx_runtime.jsxs)("div", {
                                         className: "flex items-center gap-2",
                                         children: [
-                                            /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                src: Point/* default */.Z,
+                                            /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                src: "/Point.png",
                                                 alt: "bullet point",
                                                 width: 10
                                             }),
@@ -661,7 +615,7 @@ function HomeDYN() {
                 ]
             }),
             /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                src: hero_book,
+                src: "/hero book.png",
                 width: 420,
                 height: 680,
                 alt: "book logo",
@@ -672,8 +626,6 @@ function HomeDYN() {
 }
 
 ;// CONCATENATED MODULE: ./src/components/Routes/AboutDYN.jsx
-
-
 
 function AboutDYN() {
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)("section", {
@@ -686,8 +638,8 @@ function AboutDYN() {
                         className: "text-5xl text-center mb-3 cardoFont font-bold text-white",
                         children: "About the Author"
                     }),
-                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                        src: Line/* default */.Z,
+                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                        src: "/Line.png",
                         alt: "line",
                         width: 50
                     })
@@ -725,8 +677,6 @@ function ServicesDYN() {
 
 ;// CONCATENATED MODULE: ./src/components/Routes/ContactDYN.jsx
 
-
-
 function ContactDYN() {
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)("section", {
         className: "w-full flex flex-col items-center",
@@ -738,8 +688,8 @@ function ContactDYN() {
                         className: "text-5xl text-center mb-3 cardoFont font-bold text-white",
                         children: "Contact Us"
                     }),
-                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                        src: Line/* default */.Z,
+                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                        src: "/Line.png",
                         alt: "line",
                         width: 50
                     })
@@ -755,8 +705,6 @@ function ContactDYN() {
 
 ;// CONCATENATED MODULE: ./src/components/Routes/StoreDYN.jsx
 
-
-
 function StoreDYN() {
     return /*#__PURE__*/ (0,jsx_runtime.jsxs)("section", {
         className: "w-full flex flex-col items-center",
@@ -768,8 +716,8 @@ function StoreDYN() {
                         className: "text-5xl text-center mb-3 cardoFont font-bold text-white",
                         children: "My Store"
                     }),
-                    /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                        src: Line/* default */.Z,
+                    /*#__PURE__*/ jsx_runtime.jsx("img", {
+                        src: "/Line.png",
                         alt: "line",
                         width: 50
                     })
@@ -1275,7 +1223,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5893);
 /* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(108);
 /* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_globals_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_RootLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5712);
+/* harmony import */ var _components_RootLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1905);
 
 
 

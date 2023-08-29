@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import line from '../../public/images/Line.png';
 import Image from 'next/image';
-import atomicBook from '../../public/images/atomic book.png';
-import book from '../../public/images/book(2).png';
-import bullet from '../../public/images/Point.png';
+import atomicBook from '../../public/atomic book.png';
+import book from '../../public/book(2).png';
+import bullet from '../../public/Point.png';
 import AboutAuthor from '@/components/Home Components/AboutAuthor';
 import Trustees from '@/components/Home Components/Trustees';
 import BannerHome from '@/components/Home Components/BannerHome';
@@ -21,7 +20,7 @@ export default function Home() {
       <section className="container mx-auto px-8 mb-32">
         <div className="flex flex-col items-center my-8">
           <h2 className="text-3xl text-center mb-3 cardoFont font-bold text-headerBackground">Author's Book Includes</h2>
-          <Image src={line} alt="line" width={80} />
+          <img src="/Line.png" alt="line" width={80} height={20} />
         </div>
 
         <div className="flex flex-col xl:flex-row items-center justify-center xl:gap-10 my-10">

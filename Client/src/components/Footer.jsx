@@ -1,6 +1,3 @@
-import Image from 'next/image';
-import book from '../../public/images/book.png';
-import bullet from '../../public/images/icon.png';
 import { useState } from 'react';
 
 export default function Footer() {
@@ -11,7 +8,7 @@ export default function Footer() {
       <div className="container mx-auto flex flex-col lg:flex-row items-start gap-8 border-b border-mainPGParagraphTxt pb-8 mb-4">
         <div>
           <div className="flex items-center">
-            <Image src={book} alt="logo" />
+            <img src="/book.png" alt="logo" />
             <label htmlFor="logo" className="pl-2 text-white font-bold">
               Bookly
             </label>
@@ -29,42 +26,42 @@ export default function Footer() {
             <h4 className="cardoFont text-white text-lg pb-3 font-bold">Explore</h4>
             <ul>
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Home
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   About Us
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Services
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Appointment
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Blog
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Contact Us
                 </label>
@@ -76,42 +73,42 @@ export default function Footer() {
             <h4 className="cardoFont text-white text-lg pb-3 font-bold">Utility Pages</h4>
             <ul>
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Start here
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Style guide
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   404 not found
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Password protected
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Licenses
                 </label>
               </li>
 
               <li className="flex items-center gap-2 py-1">
-                <Image src={bullet} alt="bullet point" />
+                <img src="/icon.png" alt="bullet point" />
                 <label htmlFor="bullet point" className="text-white text-sm">
                   Changelog
                 </label>

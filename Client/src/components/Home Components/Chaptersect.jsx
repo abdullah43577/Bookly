@@ -1,11 +1,4 @@
-import line from '../../../public/images/Line.png';
-import Image from 'next/image';
-import bullet from '../../../public/images/Point.png';
 import Link from 'next/link';
-import man1 from '../../../public/images/man 1.png';
-import man2 from '../../../public/images/man 2.png';
-import female from '../../../public/images/female.png';
-import rating from '../../../public/images/Group 3.svg';
 
 export default function ChapterSection() {
   return (
@@ -14,7 +7,7 @@ export default function ChapterSection() {
         <div className="container mx-auto mb-32 flex flex-col items-center">
           <div className="flex flex-col items-center my-8">
             <h2 className="text-3xl text-center mb-3 cardoFont font-bold text-headerBackground">The Chapter Includes</h2>
-            <Image src={line} alt="line" width={80} />
+            <img src="/Line.png" alt="line" width={80} />
           </div>
 
           <div className="gridBox">
@@ -25,7 +18,7 @@ export default function ChapterSection() {
               <div className="flex justify-between xl:justify-normal items-center gap-6">
                 <div className="info1 flex flex-col xl:flex-row items-center gap-1">
                   <div className="flex items-center gap-2">
-                    <Image src={bullet} alt="bullet point" width={10} />
+                    <img src="/Point.png" alt="bullet point" width={10} />
                     <label htmlFor="pages" className="text-headerBackground text-base font-medium cardoFont">
                       Pages:
                     </label>
@@ -35,7 +28,7 @@ export default function ChapterSection() {
 
                 <div className="info2 flex flex-col xl:flex-row items-center gap-1">
                   <div className="flex items-center gap-2">
-                    <Image src={bullet} alt="bullet point" width={10} />
+                    <img src="/Point.png" alt="bullet point" width={10} />
                     <label htmlFor="pages" className="text-headerBackground text-base font-medium cardoFont">
                       Length:
                     </label>
@@ -52,7 +45,7 @@ export default function ChapterSection() {
               <div className="flex justify-between xl:justify-normal items-center gap-6">
                 <div className="info1 flex flex-col xl:flex-row items-center gap-1">
                   <div className="flex items-center gap-2">
-                    <Image src={bullet} alt="bullet point" width={10} />
+                    <img src="/Point.png" alt="bullet point" width={10} />
                     <label htmlFor="pages" className="text-headerBackground text-base font-medium cardoFont">
                       Pages:
                     </label>
@@ -62,7 +55,7 @@ export default function ChapterSection() {
 
                 <div className="info2 flex flex-col xl:flex-row items-center gap-1">
                   <div className="flex items-center gap-2">
-                    <Image src={bullet} alt="bullet point" width={10} />
+                    <img src="/Point.png" alt="bullet point" width={10} />
                     <label htmlFor="pages" className="text-headerBackground text-base font-medium cardoFont">
                       Length:
                     </label>
@@ -79,7 +72,7 @@ export default function ChapterSection() {
               <div className="flex justify-between xl:justify-normal items-center gap-6">
                 <div className="info1 flex flex-col xl:flex-row items-center gap-1">
                   <div className="flex items-center gap-2">
-                    <Image src={bullet} alt="bullet point" width={10} />
+                    <img src="/Point.png" alt="bullet point" width={10} />
                     <label htmlFor="pages" className="text-headerBackground text-base font-medium cardoFont">
                       Pages:
                     </label>
@@ -89,7 +82,7 @@ export default function ChapterSection() {
 
                 <div className="info2 flex flex-col xl:flex-row items-center gap-1">
                   <div className="flex items-center gap-2">
-                    <Image src={bullet} alt="bullet point" width={10} />
+                    <img src="/Point.png" alt="bullet point" width={10} />
                     <label htmlFor="pages" className="text-headerBackground text-base font-medium cardoFont">
                       Length:
                     </label>
@@ -106,7 +99,7 @@ export default function ChapterSection() {
               <div className="flex justify-between xl:justify-normal items-center gap-6">
                 <div className="info1 flex flex-col xl:flex-row items-center gap-1">
                   <div className="flex items-center gap-2">
-                    <Image src={bullet} alt="bullet point" width={10} />
+                    <img src="/Point.png" alt="bullet point" width={10} />
                     <label htmlFor="pages" className="text-headerBackground text-base font-medium cardoFont">
                       Pages:
                     </label>
@@ -116,7 +109,7 @@ export default function ChapterSection() {
 
                 <div className="info2 flex flex-col xl:flex-row items-center gap-1">
                   <div className="flex items-center gap-2">
-                    <Image src={bullet} alt="bullet point" width={10} />
+                    <img src="/Point.png" alt="bullet point" width={10} />
                     <label htmlFor="pages" className="text-headerBackground text-base font-medium cardoFont">
                       Length:
                     </label>
@@ -144,11 +137,11 @@ export default function ChapterSection() {
         <div className="container mx-auto flex flex-col items-center gap-16 lg:flex-row">
           <article className="lg:w-[40%]">
             <h2 className="text-3xl text-center xl:text-left mb-3 font-bold text-headerBackground cardoFont">What Readers Say About The Book</h2>
-            <Image src={line} alt="line" />
+            <img src="/Line.png" alt="line" />
             <p className="text-mainPGParagraphTxt my-3">If you are going to use a passage of lorem ipsum, you need to be sure there isn't anything embarassing hidden in the middle of the text. All the lorem ipsum generators.</p>
             <section>
               <div className="flex items-center gap-2">
-                <Image src={rating} alt="rating" width={100} />
+                <img src="/Group 3.svg" alt="rating" width={100} />
                 <label htmlFor="rating" className="text-headerBackground">
                   (4.8/5)
                 </label>
@@ -160,10 +153,10 @@ export default function ChapterSection() {
           <div className="lg:w-[60%] testimonial_grid">
             <article className="bg-[#1B3764] px-6 py-4 max-w-[300px] rounded-md">
               <div className="flex items-center gap-3 mb-4">
-                <Image src={man1} alt="image of a man" width={50} />
+                <img src="/man 1.png" alt="image of a man" width={50} />
                 <div>
                   <p className="text-white cardoFont">Martin Phillips</p>
-                  <Image src={rating} alt="rating icon" width={50} />
+                  <img src="/Group 3.svg" alt="rating icon" width={50} />
                 </div>
               </div>
               <p className="text-white my-2 cardoFont">"Awesome Impact"</p>
@@ -172,10 +165,10 @@ export default function ChapterSection() {
 
             <article className="bg-[#1B3764] px-6 py-4 max-w-[300px] rounded-md">
               <div className="flex items-center gap-3 mb-4">
-                <Image src={man2} alt="image of a man" width={50} />
+                <img src="/man 2.png" alt="image of a man" width={50} />
                 <div>
                   <p className="text-white cardoFont">James Anderson</p>
-                  <Image src={rating} alt="rating icon" width={50} />
+                  <img src="/Group 3.svg" alt="rating icon" width={50} />
                 </div>
               </div>
               <p className="text-white my-2 cardoFont">"Mind Blowing Words"</p>
@@ -184,10 +177,10 @@ export default function ChapterSection() {
 
             <article className="bg-[#1B3764] px-6 py-4 max-w-[300px] rounded-md">
               <div className="flex items-center gap-3 mb-4">
-                <Image src={female} alt="image of a man" width={50} />
+                <img src="/female.png" alt="image of a man" width={50} />
                 <div>
                   <p className="text-white cardoFont">Christina Louis</p>
-                  <Image src={rating} alt="rating icon" width={50} />
+                  <img src="/Group 3.svg" alt="rating icon" width={50} />
                 </div>
               </div>
               <p className="text-white my-2 cardoFont">"Great Books Collection"</p>

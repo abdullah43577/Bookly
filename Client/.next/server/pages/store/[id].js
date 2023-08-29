@@ -5,7 +5,7 @@ exports.id = 513;
 exports.ids = [513];
 exports.modules = {
 
-/***/ 8687:
+/***/ 9452:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -49,18 +49,11 @@ var _app = __webpack_require__(8375);
 var jsx_runtime = __webpack_require__(5893);
 // EXTERNAL MODULE: ./src/components/helper.js
 var helper = __webpack_require__(956);
-;// CONCATENATED MODULE: ./public/images/Vector2.png
-/* harmony default export */ const Vector2 = ({"src":"/_next/static/media/Vector2.88c03e4e.png","height":23,"width":22,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAJ1BMVEVMaXEaNmMaNmIaNmQaN2MZNmMaNWMbM2IaN2UYNmMaN2MASG0YNWJztJ8wAAAADXRSTlMAnE+HYcR7H28rrgM+ORRWkAAAAAlwSFlzAAALEwAACxMBAJqcGAAAADRJREFUeJwdw4cJgAAQALH73tx/XtFAsBiOT25nZoOGunrACEcJXDxTbRwqIlKA6/9Yg7UXJoEBBPf3TXAAAAAASUVORK5CYII=","blurWidth":8,"blurHeight":8});
-// EXTERNAL MODULE: ./node_modules/next/image.js
-var next_image = __webpack_require__(5675);
-var image_default = /*#__PURE__*/__webpack_require__.n(next_image);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
-// EXTERNAL MODULE: ./src/components/RootLayout.jsx + 13 modules
-var RootLayout = __webpack_require__(5712);
+// EXTERNAL MODULE: ./src/components/RootLayout.jsx + 8 modules
+var RootLayout = __webpack_require__(1905);
 ;// CONCATENATED MODULE: ./src/pages/store/[id].js
-
-
 
 
 
@@ -257,8 +250,8 @@ function Details({ bookInfo }) {
                                             className: "cardoFont bg-CTA px-6 py-3 text-headerBackground font-bold",
                                             onClick: handleAddToCart,
                                             children: [
-                                                /*#__PURE__*/ jsx_runtime.jsx((image_default()), {
-                                                    src: Vector2,
+                                                /*#__PURE__*/ jsx_runtime.jsx("img", {
+                                                    src: "/Vector2.png",
                                                     alt: "cart icon",
                                                     className: "inline"
                                                 }),
@@ -571,7 +564,7 @@ module.exports = require("sweetalert2");
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [743,544], () => (__webpack_exec__(8687)));
+var __webpack_exports__ = __webpack_require__.X(0, [743,544], () => (__webpack_exec__(9452)));
 module.exports = __webpack_exports__;
 
 })();

@@ -1,7 +1,4 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import cart from '../../public/images/Vector.png';
-import book from '../../public/images/book.png';
 import { useContext } from 'react';
 import { modal } from './RootLayout';
 
@@ -23,7 +20,7 @@ export default function Navbar() {
   return (
     <nav className="logo_nav_menu flex items-center justify-between w-full py-6 h-[10vh]">
       <div className="logo flex items-center justify-center z-20">
-        <Image src={book} alt="logo icon" />
+        <img src="/book.png" alt="logo icon" />
         <label htmlFor="logo" className="pl-2 text-white font-bold">
           Bookly
         </label>
@@ -62,7 +59,7 @@ export default function Navbar() {
 
         {/* Cart icon */}
         <div className="relative" onClick={handleCartClick}>
-          <Image src={cart} alt="cart icon" height={21} width={22} className="cursor-pointer" />
+          <img src="/Vector.png" alt="cart icon" height={21} width={22} className="cursor-pointer" />
 
           {noOfItemsInCart > 0 && <span className="absolute -top-1 -right-1 bg-CTA text-white rounded-full w-4 h-4 text-xs flex items-center cardoFont justify-center">{noOfItemsInCart}</span>}
         </div>

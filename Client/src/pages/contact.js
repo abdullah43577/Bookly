@@ -1,12 +1,4 @@
 import Head from 'next/head';
-import Line from '../../public/images/Line.png';
-import Image from 'next/image';
-import userIcon from '../../public/images/user.png';
-import mailIcon from '../../public/images/mail.png';
-import phoneIcon from '../../public/images/phone2.png';
-import editIcon from '../../public/images/edit.png';
-import bullet from '../../public/images/Point.png';
-import ellipse from '../../public/images/Ellipse.png';
 import { useState } from 'react';
 
 export default function Contact() {
@@ -47,7 +39,7 @@ export default function Contact() {
         <article className="mb-10 lg:mb-0">
           <div className="text-center lg:text-left">
             <h2 className="text-3xl cardoFont font-bold text-headerBackground mb-3">Keep in Touch</h2>
-            <Image src={Line} alt="border" />
+            <img src="/Line.png" alt="border" />
           </div>
 
           <p className="text-mainPGParagraphTxt my-3 text-center lg:text-left">
@@ -126,23 +118,23 @@ export default function Contact() {
         <form className="flex flex-col p-0 lg:p-4">
           <div className="flex items-center gap-4">
             <div className="relative w-auto md:w-[250px] border border-gray-300">
-              <Image src={userIcon} alt="user icon" className="absolute left-2 bottom-2" />
+              <img src="/user.png" alt="user icon" className="absolute left-2 bottom-2" />
               <input type="text" placeholder="Name" className="w-full px-10 py-2 outline-none" />
             </div>
 
             <div className="relative w-auto md:w-[250px] border border-gray-300">
-              <Image src={mailIcon} alt="mail icon" className="absolute left-2 bottom-2" />
+              <img src="/mail.png" alt="mail icon" className="absolute left-2 bottom-2" />
               <input type="text" placeholder="Email" className="w-full px-10 py-2 outline-none" />
             </div>
           </div>
 
           <div className="relative border border-gray-300">
-            <Image src={phoneIcon} alt="phone icon" className="absolute left-2 bottom-2" />
+            <img src="/phone2.png" alt="phone icon" className="absolute left-2 bottom-2" />
             <input type="text" placeholder="Phone" className="w-full px-10 py-2 outline-none" />
           </div>
 
           <div className="relative border border-gray-300">
-            <Image src={editIcon} alt="edit icon" className="absolute left-2 top-2" />
+            <img src="/edit.png" alt="edit icon" className="absolute left-2 top-2" />
             <textarea placeholder="Message" className="w-full px-10 py-2 outline-none h-[150px]"></textarea>
           </div>
 
@@ -161,14 +153,14 @@ export default function Contact() {
         <div className="container mx-auto flex flex-col items-center">
           <div className="mb-16 flex items-center flex-col justify-center">
             <h2 className="text-3xl text-headerBackground text-center cardoFont font-bold mb-2">Frequent Questions?</h2>
-            <Image src={Line} alt="line" />
+            <img src="/Line.png" alt="line" />
           </div>
 
           <div className="flex flex-col lg:flex-row px-4 lg:px-0 items-start lg:gap-[8rem]">
             <div className="faqBox">
               <div className="overflow-hidden border-b border-mainPGParagraphTxt pb-4">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq1')}>
-                  <Image src={faqState.faq1 ? ellipse : bullet} alt="bullet" width={10} />
+                  <img src={faqState.faq1 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} />
 
                   <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
                 </div>
@@ -181,7 +173,7 @@ export default function Contact() {
 
               <div className="border-b border-mainPGParagraphTxt pb-4 my-8 overflow-hidden">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq2')}>
-                  <Image src={faqState.faq2 ? ellipse : bullet} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Is Hack Productivity book available on the one stores?</h3>
+                  <img src={faqState.faq2 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Is Hack Productivity book available on the one stores?</h3>
                 </div>
 
                 <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq2 ? 'faqActive' : '-translate-y-[100%]'}`}>
@@ -192,7 +184,7 @@ export default function Contact() {
 
               <div className="border-b border-mainPGParagraphTxt pb-4 my-8 overflow-hidden">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq3')}>
-                  <Image src={faqState.faq3 ? ellipse : bullet} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">What is Hack Productivity book about?</h3>
+                  <img src={faqState.faq3 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">What is Hack Productivity book about?</h3>
                 </div>
 
                 <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq3 ? 'faqActive' : '-translate-y-[100%]'}`}>
@@ -203,7 +195,7 @@ export default function Contact() {
 
               <div className="border-b border-mainPGParagraphTxt pb-4 my-8 overflow-hidden">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq4')}>
-                  <Image src={faqState.faq4 ? ellipse : bullet} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Where can I get Hack Productivity book?</h3>
+                  <img src={faqState.faq4 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Where can I get Hack Productivity book?</h3>
                 </div>
 
                 <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq4 ? 'faqActive' : '-translate-y-[100%]'}`}>
@@ -214,7 +206,7 @@ export default function Contact() {
 
               <div className="border-b border-mainPGParagraphTxt pb-4 my-8 overflow-hidden">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq5')}>
-                  <Image src={faqState.faq5 ? ellipse : bullet} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
+                  <img src={faqState.faq5 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} /> <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
                 </div>
 
                 <div className={`faq text-mainPGParagraphTxt ml-6 ${faqState.faq5 ? 'faqActive' : '-translate-y-[100%]'}`}>
@@ -227,7 +219,7 @@ export default function Contact() {
             <div className="faqBox">
               <div className="overflow-hidden border-b border-mainPGParagraphTxt pb-4">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq6')}>
-                  <Image src={faqState.faq6 ? ellipse : bullet} alt="bullet" width={10} />
+                  <img src={faqState.faq6 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} />
 
                   <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
                 </div>
@@ -240,7 +232,7 @@ export default function Contact() {
 
               <div className="overflow-hidden my-8 border-b border-mainPGParagraphTxt pb-4">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq7')}>
-                  <Image src={faqState.faq7 ? ellipse : bullet} alt="bullet" width={10} />
+                  <img src={faqState.faq7 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} />
 
                   <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
                 </div>
@@ -253,7 +245,7 @@ export default function Contact() {
 
               <div className="overflow-hidden my-8 border-b border-mainPGParagraphTxt pb-4">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq8')}>
-                  <Image src={faqState.faq8 ? ellipse : bullet} alt="bullet" width={10} />
+                  <img src={faqState.faq8 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} />
 
                   <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
                 </div>
@@ -266,7 +258,7 @@ export default function Contact() {
 
               <div className="overflow-hidden my-8 border-b border-mainPGParagraphTxt pb-4">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq9')}>
-                  <Image src={faqState.faq9 ? ellipse : bullet} alt="bullet" width={10} />
+                  <img src={faqState.faq9 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} />
 
                   <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
                 </div>
@@ -279,7 +271,7 @@ export default function Contact() {
 
               <div className="overflow-hidden my-8 border-b border-mainPGParagraphTxt pb-4">
                 <div className="flex items-center cursor-pointer" onClick={() => handleFaqToggle('faq10')}>
-                  <Image src={faqState.faq10 ? ellipse : bullet} alt="bullet" width={10} />
+                  <img src={faqState.faq10 ? '/Ellipse.png' : '/Point.png'} alt="bullet" width={10} />
 
                   <h3 className="cardoFont text-headerBackground text-xl font-bold ml-3">Do you offer discounts for education?</h3>
                 </div>

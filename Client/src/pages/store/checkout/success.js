@@ -5,12 +5,6 @@ export default function SuccessCheckout() {
   const router = useRouter();
   const { status, tx_ref, transaction_id } = router.query;
 
-  // safe guard if someone manually navigates to this route
-  if (!status) {
-    window.open('https://bookly-app-nu.vercel.app', '_self');
-    return;
-  }
-
   //empty cart
   useEffect(() => localStorage.clear(), []);
 

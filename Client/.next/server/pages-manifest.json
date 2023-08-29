@@ -5,11 +5,11 @@
   "/about": "pages/about.html",
   "/api/hello": "pages/api/hello.js",
   "/contact": "pages/contact.html",
+  "/": "pages/index.html",
   "/services": "pages/services.html",
   "/store/checkout": "pages/store/checkout.html",
   "/store/checkout/success": "pages/store/checkout/success.html",
   "/store": "pages/store.html",
   "/store/[id]": "pages/store/[id].js",
-  "/": "pages/index.js",
   "/404": "pages/404.html"
 }

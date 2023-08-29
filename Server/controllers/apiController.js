@@ -5,6 +5,7 @@ const axios = require('axios');
 
 const api_index = (req, res) => {
   res.status(200).json({ message: 'Hello World!' });
+  console.log('Hello World!');
 };
 
 // upload the formData to the database

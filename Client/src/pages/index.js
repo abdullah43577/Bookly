@@ -10,21 +10,8 @@ import BannerHome from '@/components/Home Components/BannerHome';
 import WhatToLearn from '@/components/Home Components/WhatToLearn';
 import ChapterSection from '@/components/Home Components/Chaptersect';
 import ArticleResource from '@/components/Home Components/ArticleResource';
-import { SERVER } from '@/components/helper';
 
-//? getting data from the server (runs before this page is loaded)
-export const getStaticProps = async () => {
-  const res = await fetch(SERVER);
-  const data = await res.json();
-
-  return {
-    props: { data },
-  };
-};
-
-export default function Home({ data }) {
-  console.log(data.message);
-
+export default function Home() {
   return (
     <>
       <Head>

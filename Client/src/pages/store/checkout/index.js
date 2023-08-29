@@ -73,6 +73,11 @@ export default function Checkout() {
 
       const data = await res.json();
 
+      console.log('message1', data.message);
+      console.log('message2', data.message2);
+      console.log('message3', data.message3);
+      console.log(data.err2);
+
       if (res.status !== 200) throw new Error(data.err2);
       console.log(data.message);
 

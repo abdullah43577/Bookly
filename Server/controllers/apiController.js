@@ -99,7 +99,7 @@ const api_checkout = async (req, res) => {
     const { link } = response.data.data;
     res.status(200).send({ message: link });
   } catch (err) {
-    res.status(500).send({ error: 'Error making payment' });
+    res.status(500).send({ error: 'Error making payment', err1: err.code, err2: err.response.body });
     console.log(err.code);
     console.log(err.response.body);
   }

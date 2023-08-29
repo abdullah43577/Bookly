@@ -73,7 +73,7 @@ export default function Checkout() {
 
       const data = await res.json();
 
-      if (res.status !== 200) throw new Error(data.error);
+      if (res.status !== 200) throw new Error(data.err2);
       console.log(data.message);
 
       // window.open(data.message, '_blank', 'toolbar=0,location=0,menubar=0');

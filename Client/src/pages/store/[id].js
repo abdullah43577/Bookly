@@ -31,6 +31,7 @@ export const getStaticProps = async function ({ params }) {
       props: {
         bookInfo: data,
       },
+      revalidate: 60 * 5, // revalidate every 5 minutes
     };
   } catch (err) {
     console.error(err);
